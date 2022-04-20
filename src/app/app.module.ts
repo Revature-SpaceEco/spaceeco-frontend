@@ -7,6 +7,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     NavbarComponent
   ],
   imports: [
+    FlexLayoutModule,
     MatToolbarModule,
     BrowserModule,
     AppRoutingModule,
+    MatIconModule,
     BrowserAnimationsModule
   ],
   providers: [],
