@@ -6,7 +6,7 @@ import { UserRole } from 'src/app/models/UserRole';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-display-products',
+  selector: 'display-products',
   templateUrl: './display-products.component.html',
   styleUrls: ['./display-products.component.css']
 })
@@ -27,6 +27,7 @@ export class DisplayProductsComponent implements OnInit {
   
   ngOnInit(): void {
     this.getProducts();
+    console.log(this.getProducts);
   }
 
 }

@@ -12,12 +12,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CartAddComponent } from './cart-add/cart-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayProductsComponent,
     NavbarComponent,
+    CartAddComponent,
 
   ],
   imports: [
@@ -27,7 +29,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     MatIconModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],
