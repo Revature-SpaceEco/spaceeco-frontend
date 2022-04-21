@@ -16,8 +16,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    DisplayProductsComponent
-    NavbarComponent
+    DisplayProductsComponent,
+    NavbarComponent,
 
   ],
   imports: [
@@ -27,7 +27,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
 
   ],
   providers: [],
