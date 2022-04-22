@@ -3,11 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
-import { ServicesComponent } from './services/services.component';
-
+import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,11 +17,9 @@ import { AuthComponent } from './components/auth/auth.component';
   declarations: [
     AppComponent,
     RegisterComponent,
-    ServicesComponent
     DisplayProductsComponent,
     NavbarComponent,
     AuthComponent,
-
   ],
   imports: [
     FlexLayoutModule,
@@ -34,9 +29,8 @@ import { AuthComponent } from './components/auth/auth.component';
     HttpClientModule,
     MatIconModule,
     BrowserAnimationsModule,
-
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
