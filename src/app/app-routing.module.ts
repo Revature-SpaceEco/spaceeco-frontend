@@ -11,8 +11,9 @@ const routes: Routes = [
   {path:'login', component: AuthComponent}
 ]
 
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
