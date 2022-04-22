@@ -16,23 +16,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-<<<<<<< HEAD
 import { CartAddComponent } from './components/cart-add/cart-add.component';
 import { ProductServiceService } from './services/product-service.service';
-=======
 import { AuthComponent } from './components/auth/auth.component';
->>>>>>> main-dev
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayProductsComponent,
     NavbarComponent,
-<<<<<<< HEAD
     CartAddComponent,
-=======
-    AuthComponent,
->>>>>>> main-dev
+    AuthComponent
 
   ],
   imports: [
@@ -43,15 +37,10 @@ import { AuthComponent } from './components/auth/auth.component';
     AppRoutingModule,
     HttpClientModule,
     MatIconModule,
-<<<<<<< HEAD
-    BrowserAnimationsModule
-
-=======
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
->>>>>>> main-dev
   ],
   providers: [ProductServiceService],
   bootstrap: [AppComponent]
