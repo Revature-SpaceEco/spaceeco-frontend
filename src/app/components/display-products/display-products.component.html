@@ -1,0 +1,14 @@
+
+
+
+<div *ngFor = "let productList of products | async; let indexOfElement = index" class = "productList">
+    <p>{{indexOfElement}}</p>
+    <p>{{productList.productName}}
+        {{productList.productImage}}
+        {{productList.productCost}}
+        
+    </p>
+    <div *ngFor = "let usersInfo of productList.productSellerId;">
+            {{usersInfo.lastName}}
+    </div>
+</div>

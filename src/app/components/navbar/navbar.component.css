@@ -1,0 +1,9 @@
+.spacer {
+  flex: 1 2 auto;
+  text-align: right;
+}
+
+mat-toolbar {
+  background-color: orange;
+  color: white;
+}
