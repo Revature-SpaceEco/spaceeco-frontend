@@ -15,6 +15,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CartAddComponent } from './components/cart-add/cart-add.component';
+import { ProductServiceService } from './services/product-service.service';
 import { AuthComponent } from './components/auth/auth.component';
 import { MatSelectModule } from '@angular/material/select';
 
@@ -24,7 +26,9 @@ import { MatSelectModule } from '@angular/material/select';
     RegisterComponent,
     DisplayProductsComponent,
     NavbarComponent,
-    AuthComponent,
+    CartAddComponent,
+    AuthComponent
+
   ],
   imports: [
     FlexLayoutModule,
@@ -40,7 +44,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     MatSelectModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [ProductServiceService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
