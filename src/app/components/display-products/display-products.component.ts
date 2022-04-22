@@ -33,7 +33,9 @@ export class DisplayProductsComponent implements OnInit {
   
   ngOnInit(): void {
     this.getProducts();
-    console.log(this.getProducts);
+    // console.log(this.getProducts);
+
+    this.getProductById();
   }
 
 }

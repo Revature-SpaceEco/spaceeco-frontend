@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CartAddComponent } from './components/cart-add/cart-add.component';
+import { ProductServiceService } from './services/product-service.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { CartAddComponent } from './components/cart-add/cart-add.component';
     BrowserAnimationsModule
 
   ],
-  providers: [],
+  providers: [ProductServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

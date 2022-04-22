@@ -9,22 +9,19 @@ import { UserRole } from '../models/UserRole';
   providedIn: 'root'
 })
 export class ProductServiceService {
-  products!: Observable<Products[]>;
-  user!: Observable<User[]>;
-  userRole!: Observable<UserRole[]>;
-  id: any;
-  product: any;
-  http: HttpClient;
+  // products!: Observable<Products[]>;
+  // user!: Observable<User[]>;
+  // userRole!: Observable<UserRole[]>;
+  // id: any;
+    product: any;
+    http: HttpClient;
 
   constructor(httpClient: HttpClient) {
     this.http = httpClient;
+    this.product = this.http.get<Products>('http://localhost:8080/products/:id');
    }
 
-   getProductById(): Observable<Products> {
-     return this.http.get<Products>('http://localhost:8080/products/${id}');
-   }
+   getProductById(){return this.product}
 
-   getProducts(){
-    this.products = this.http.get<Products[]>('http://localhost:8080/products');
-  }
+
 }

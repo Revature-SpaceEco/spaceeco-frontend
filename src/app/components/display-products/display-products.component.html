@@ -5,6 +5,9 @@
         <p> {{productList.productImage}}</p>
         <p>{{productList.productCost}}</p>
         <!-- <button class="add-to-cart-btn" [routerLink]=" ['/products', products.productId]"> Add to Cart </button>   -->
+        <p [routerLink] = "['/products/:id', productList.productId]"> {{productList.productName}} </p>
     </div>
+
+    
 </div>
 

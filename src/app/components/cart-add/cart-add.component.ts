@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Products } from 'src/app/models/Products';
 import { ProductServiceService } from 'src/app/services/product-service.service';
 
@@ -10,19 +10,10 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 })
 export class CartAddComponent implements OnInit {
 
-  // productRouteId: any;
-  // currentProduct: Products;
-  // productService: any;
-  
-  constructor(productService: ProductServiceService, route: ActivatedRoute) { }
+  product: any;
+  constructor(productService: ProductServiceService) { this.product = productService.getProductById}
 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe((params: ParamMap) => {
-    //   this.productRouteId = params.get('id');
-    // })
-    // this.productService.getProductById().subscribe(product) =>{
-    //   this.currentProduct = product;
-    // }
+    console.log(this.product)
   }
-
 }
