@@ -1,17 +1,21 @@
-<div>
-  <div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>SpaceEco</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-md-image src="" alt="">
+  <mat-card-content>
     <form action="">
+      <mat-form-field>
+        <input matInput type="text" name="username" id="username" placeholder="Username">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" name="password" id="password" placeholder="Password">
+      </mat-form-field>
       <div>
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
-      </div>
-      <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-      </div>
-      <div>
-        <button type="submit">Login</button>
+        <button mat-raised-button type="submit">Login</button>
       </div>
     </form>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>
