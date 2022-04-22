@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
+interface Role {
+  value: number;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  form: any = {
-    firstname: null,
-    lastname: null,
-    email: null,
-    password: null,
-  };
-  isSuccessful = false;
-  isSignUpFailed = false;
-  errorMessage = '';
+  roles: Role[] = [
+    { value: 1, viewValue: 'admin' },
+    { value: 2, viewValue: 'buyer' },
+    { value: 3, viewValue: 'seller' },
+  ];
+
   constructor() {}
   //constructor(private authService: ServicesComponent) {}
   ngOnInit(): void {}

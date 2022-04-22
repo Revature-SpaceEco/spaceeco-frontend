@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from './components/auth/auth.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AuthComponent } from './components/auth/auth.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
