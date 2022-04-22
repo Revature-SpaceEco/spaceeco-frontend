@@ -12,16 +12,16 @@ export class ProductServiceService {
   // products!: Observable<Products[]>;
   // user!: Observable<User[]>;
   // userRole!: Observable<UserRole[]>;
-  // id: any;
-    product: any;
+
     http: HttpClient;
 
   constructor(httpClient: HttpClient) {
     this.http = httpClient;
-    this.product = this.http.get<Products>('http://localhost:8080/products/:id');
    }
 
-   getProductById(){return this.product}
+   getProductById(id: number){
+     return this.http.get<Products>(`http://localhost:8080/products/${id}`);
+    }
 
 
 }
