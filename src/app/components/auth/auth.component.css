@@ -10,6 +10,14 @@ mat-form-field {
   display: block;
 }
 
+h2 {
+  margin: 10px 0px;;
+}
+
+img {
+  padding: 0 0 17.5px;
+}
+
 button {
   background-color: #F26925;
   border-radius: 10px;
