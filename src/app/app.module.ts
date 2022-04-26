@@ -19,6 +19,7 @@ import { CartAddComponent } from './components/cart-add/cart-add.component';
 import { ProductServiceService } from './services/product-service.service';
 import { AuthComponent } from './components/auth/auth.component';
 import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 
@@ -30,8 +31,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     NavbarComponent,
     CartAddComponent,
     AuthComponent,
-    ProfileComponent
-
+    ProfileComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -47,8 +47,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatButtonModule,
     MatSelectModule,
     MatGridListModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ProductServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
