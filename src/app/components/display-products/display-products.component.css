@@ -19,3 +19,18 @@
 .product-name:hover{
     cursor:pointer;
 }
+
+
+.product-name{
+    padding-top: 30px;
+    text-align: left;
+}
+
+.product-cost{
+    text-align: left;
+}
+.product-image {
+    margin-top: 50px;
+    max-width: 200px;
+    max-height: 200px;
+}

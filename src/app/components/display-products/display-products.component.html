@@ -1,8 +1,15 @@
 <div class = "rows">
-    <div *ngFor = "let product of products | async; let indexOfElement = index" class = "productList">
-        <p  class = "product-name" (click)="selectProduct(product.productId)">{{product.productName}}</p>
-        <p> {{product.productImage}}</p>
-        <p>{{product.productCost}}</p>
+    <div layout = "row" *ngFor = "let product of products | async; let indexOfElement = index" class = "productList">
+        <div class = "rows">
+            <img class = "product-image" src = "{{product.productImage}}" >
+        <div class = "columns">
+            <p  class = "product-name" (click)="selectProduct(product.productId)">{{product.productName}}</p>
+            <div class = "columns">
+                <p>{{product.productCost}}</p>
+
+            </div>
+        </div>
         <!-- <button class="add-to-cart-btn" [routerLink]=" ['/products', products.productId]"> Add to Cart </button>   -->
+        </div>
     </div>
 </div>
