@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 
 const url = environment.BACKEND_URL;
@@ -21,5 +23,9 @@ export class AuthService {
       },
       {'observe':'response'}
     )
+  }
+  
+  register(data: any): Observable<any> {
+    return this.httpClient.post<any>(url + '/users', data);
   }
 }

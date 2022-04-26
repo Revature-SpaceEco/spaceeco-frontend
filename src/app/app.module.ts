@@ -20,6 +20,8 @@ import { CartAddComponent } from './components/cart-add/cart-add.component';
 import { ProductServiceService } from './services/product-service.service';
 import { AuthComponent } from './components/auth/auth.component';
 import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +30,8 @@ import { MatSelectModule } from '@angular/material/select';
     DisplayProductsComponent,
     NavbarComponent,
     CartAddComponent,
-    AuthComponent
-
+    AuthComponent,
+    ProfileComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -45,8 +47,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     MatSelectModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ProductServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

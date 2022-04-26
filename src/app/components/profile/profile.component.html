@@ -1,0 +1,18 @@
+<div><p>User profile pic</p></div>
+<div>
+    <p>user first and last name</p>
+    <p>user email</p>
+    <p>seller is verfied (use userrole)</p>
+</div>
+
+<div><p>payment info</p></div>
+
+<div *ngIf="address">
+    <p>{{address.addressLineOne}}</p>
+    <p>{{address.addressLineTwo}}</p>
+    <p>{{address.city}}</p>
+    <p>{{address.state}}</p>
+    <p>{{address.zip}}</p>
+    <p>{{address.solarSystem}}</p>
+    <p>{{address.planet}}</p>
+</div>
