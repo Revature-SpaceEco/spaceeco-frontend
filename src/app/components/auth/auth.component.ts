@@ -9,22 +9,26 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  username!: string;
-  password!: string;
-
+  
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  onSubmit(form: NgForm) {
+    const username = form.value.username;
+    const password = form.value.password;
     this.authService
-      .login(this.username,this.password) 
-      .subscribe(
-        (response)=>{
-          console.log(response);
-        }
-      );
+      .login(username, password)
+      .subscribe({
+        next: (v) => {
+          console.log(v)
+        },
+        error: (e) => {
+          console.log(e)
+        },
+      });
+    form.reset();
   }
 
 }
