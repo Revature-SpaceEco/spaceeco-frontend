@@ -20,6 +20,7 @@ import { ProductServiceService } from './services/product-service.service';
 import { AuthComponent } from './components/auth/auth.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ProfileComponent } from './components/profile/profile.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatGridListModule
   ],
   providers: [ProductServiceService],
   bootstrap: [AppComponent]
