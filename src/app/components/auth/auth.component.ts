@@ -23,6 +23,7 @@ export class AuthComponent implements OnInit {
       .subscribe({
         next: (v) => {
           console.log(v)
+          localStorage.setItem('jwt', v.body.jwt);
         },
         error: (e) => {
           console.log(e)
