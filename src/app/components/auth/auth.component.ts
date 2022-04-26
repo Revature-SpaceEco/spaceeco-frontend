@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -9,10 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  
-  constructor(private authService: AuthService) { }
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit(form: NgForm) {
@@ -24,6 +25,7 @@ export class AuthComponent implements OnInit {
         next: (v) => {
           console.log(v)
           localStorage.setItem('jwt', v.body.jwt);
+          this.router.navigate(['/profile']);
         },
         error: (e) => {
           console.log(e)
