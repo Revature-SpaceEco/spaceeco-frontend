@@ -1,8 +1,19 @@
-<div class = "rows">
-    <div *ngFor = "let product of products | async; let indexOfElement = index" class = "productList">
-        <p  class = "product-name" (click)="selectProduct(product.productId)">{{product.productName}}</p>
-        <p> {{product.productImage}}</p>
-        <p>{{product.productCost}}</p>
-        <!-- <button class="add-to-cart-btn" [routerLink]=" ['/products', products.productId]"> Add to Cart </button>   -->
-    </div>
-</div>
+
+<mat-grid-list cols = "3" rowheight = "600px">
+    <mat-grid-tile *ngFor = "let product of (products | async)">
+      <mat-card class = "mat-elevation-z0" >
+        <mat-card-title (click)="selectProduct(product.productId)">{{product.productName}}</mat-card-title>
+        <mat-card-subtitle (click)="selectProduct(product.productId)">{{product.productDescription}}</mat-card-subtitle>
+      <mat-card-content>
+          <img mat-card-image src="{{product.productImage}}" >
+        ${{product.productCost}}
+      </mat-card-content>
+    </mat-card>
+  
+  
+  
+  
+    </mat-grid-tile>
+    
+  
+  </mat-grid-list>
