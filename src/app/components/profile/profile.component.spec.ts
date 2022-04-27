@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AddressServiceService } from 'src/app/services/address-service.service';
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import { AddressServiceService } from '../../services/address/address-service.service';
+import {HttpClientTestingModule } from "@angular/common/http/testing";
 import { ProfileComponent } from './profile.component';
 
 describe('ProfileComponent', () => {

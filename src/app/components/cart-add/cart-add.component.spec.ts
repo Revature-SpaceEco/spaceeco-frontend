@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CartAddComponent } from './cart-add.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProductServiceService } from 'src/app/services/product-service.service';
+import { ProductServiceService } from '../../services/product/product-service.service';
 import { HttpClient } from '@angular/common/http';
 
 
