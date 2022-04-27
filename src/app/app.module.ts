@@ -22,10 +22,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { EffectsModule } from '@ngrx/effects';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatGridListModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
