@@ -10,63 +10,48 @@
     alt=""
   />
   <mat-card-content>
-    <form action="">
+    <form [formGroup]="registerForm">
       <mat-form-field>
-        <input
-          matInput
-          type="text"
-          name="firstname"
-          id="firstname"
-          placeholder="First Name"
-        />
+        <input formControlName="firstName" matInput placeholder="First Name" />
       </mat-form-field>
+
       <mat-form-field>
-        <input
-          matInput
-          type="text"
-          name="lastname"
-          id="lastname"
-          placeholder="Last Name"
-        />
+        <input formControlName="lastName" matInput placeholder="Last Name" />
       </mat-form-field>
+
       <mat-form-field>
-        <input
-          matInput
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Username"
-        />
+        <input formControlName="username" matInput placeholder="Username" />
       </mat-form-field>
+
       <mat-form-field>
-        <input
-          matInput
-          type="text"
-          name="email"
-          id="email"
-          placeholder="Email"
-        />
+        <input formControlName="email" matInput placeholder="Email" />
       </mat-form-field>
+
       <mat-form-field>
         <input
+          formControlName="password"
           matInput
           type="password"
-          name="password"
-          id="password"
           placeholder="Password"
         />
       </mat-form-field>
-      <mat-form-field appearance="fill">
+
+      <!-- <mat-form-field appearance="fill">
         <mat-label>Select role</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let role of roles" [value]="role.value">
+        <mat-select formControlName="userRoleId">
+          <mat-option
+            *ngFor="let role of roles"
+            [value]="{ id: role.value, role: role.viewValue }"
+          >
             {{ role.viewValue }}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
+
       <div>
-        <button mat-raised-button type="submit">Register</button>
+        <button mat-raised-button (click)="register()">Register</button>
       </div>
+
       <div>
         <a routerLink="/login">Already have an account? Login</a>
       </div>

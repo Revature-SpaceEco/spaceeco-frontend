@@ -11,3 +11,8 @@ a {
   text-decoration: none;
   color: white;
 }
+#logout {
+    cursor: pointer;
+}
+
+
