@@ -22,6 +22,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,6 @@ import { ProfileComponent } from './components/profile/profile.component';
     CartAddComponent,
     AuthComponent,
     CartCheckoutComponent,
-
     ProfileComponent,
   ],
   imports: [
@@ -50,6 +54,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [ProductServiceService],
   bootstrap: [AppComponent],

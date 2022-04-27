@@ -9,14 +9,14 @@ import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.
 
 
 const routes: Routes = [
-  {path: 'cart-add', component: CartAddComponent},
   {path: '', component: DisplayProductsComponent},
+  { path:'profile', component: ProfileComponent},
+  {path: 'cart-add', component: CartAddComponent},
   {path: 'products/:id', component: CartAddComponent},
   {path:'login', component: AuthComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'checkout', component: CartCheckoutComponent},
   { path: '**', component: DisplayProductsComponent}, // Create a 404 Page
-  { path:'profile', component: ProfileComponent},
 ];
 
 
