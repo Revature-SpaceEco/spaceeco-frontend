@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem("jwt")) {
-      this.loggedIn = true;  
+      this.loggedIn = true;
     }
     console.log(this.loggedIn);
   }
