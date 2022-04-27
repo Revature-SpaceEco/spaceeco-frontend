@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Address } from '../models/Address';
+import { Address } from '../../models/Address';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -11,7 +11,7 @@ const URL = environment.BACKEND_URL;
 })
 export class AddressServiceService {
 
-  constructor(private http: HttpClient) 
+  constructor(private http: HttpClient)
   { }
   userId : number = 1; //not final, get actually user ID in final
 
