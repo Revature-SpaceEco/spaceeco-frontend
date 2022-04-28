@@ -1,18 +1,49 @@
-<div><p>User profile pic</p></div>
-<div>
-    <p>user first and last name</p>
-    <p>user email</p>
-    <p>seller is verfied (use userrole)</p>
-</div>
+<mat-card
+  class="main-style"
+  fxLayoutAlign="center"
+  style="background-color: rgb(f9, f7, dc)"
+  fxLayout="row"
+>
+  <mat-card class="column-left" fxLayout="column" fxLayoutAlign="start">
+    <div class="image-border" fxLayoutAlign="center">
+      <img
+        id="profile-image"
+        src="/assets/Images/akapog.png"
+        alt="profile image"
+      />
+    </div>
+    <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
+      <h2>user first and last name</h2>
+      <p>user email</p>
+    </mat-card>
+    <mat-card class="card-color" fxLayoutAlign="center">
+      <p>seller is verfied (use userrole)</p>
+    </mat-card>
+  </mat-card>
 
-<div><p>payment info</p></div>
+  <mat-card class="column-right">
+    <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
+        <mat-card-header>
+            <h2>Payment Info</h2>
+        </mat-card-header>
+        <mat-card-content class="detail-content" style="font-size:1.5rem">
+            <p>12345</p>
+        </mat-card-content>
+        
+    </mat-card>
 
-<div *ngIf="address">
-    <p>{{address.addressLineOne}}</p>
-    <p>{{address.addressLineTwo}}</p>
-    <p>{{address.city}}</p>
-    <p>{{address.state}}</p>
-    <p>{{address.zip}}</p>
-    <p>{{address.solarSystem}}</p>
-    <p>{{address.planet}}</p>
-</div>
+    <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
+      <!--*ngIf="address">-->
+      <mat-card-header>
+          <h2>Address:</h2>
+      </mat-card-header>
+      <p>Address<!--{{address.addressLineOne}}--></p>
+      <p>Address{{ address.addressLineTwo }}</p>
+      <p>City{{ address.city }}</p>
+      <p>St{{ address.state }}</p>
+      <p>Zip00{{ address.zip }}</p>
+      <p>Solar{{ address.solarSystem }}</p>
+      <p>Planet{{ address.planet }}</p>
+    </mat-card>
+  </mat-card>
+</mat-card>

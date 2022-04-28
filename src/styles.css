@@ -2,7 +2,23 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 /* This is to remove padding around navbar by suppressing browser margin */
-body {
+/*body {
   margin: 0px;
   padding: 0px;
+}*/
+
+body{
+  color: #222;
+  background-color: #f00;
+  /*btn-txt-color: white;
+  btn-bg-color: rgb(11, 88, 160);*/
+}
+body.dark-theme {
+  color: #eee;
+  background-color: #252222;
+  /*--btn-txt-color: rgb(46, 43, 43);
+  --btn-bg-color: rgb(20, 211, 195);*/
+}
+body {
+  background: var(--bkg-color);
 }
