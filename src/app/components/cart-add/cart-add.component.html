@@ -1,4 +1,6 @@
 
+
+
 <div class="grid-container">
     <div class="item1">   
         <!-- <button class = "back-btn" [routerLink]="'/'">Back</button> -->
@@ -6,8 +8,9 @@
     </div>
     
     <div class="item2"><p> {{product.productName}}</p></div>    
-    <div class="item3"><p> {{product.productCost}}</p></div>
+    <div class="item3"><p> ${{product.productCost}}</p></div>
     <div class="item4"><p> {{product.productDescription}}</p></div>
-    <div class="item5"><button class="add-to-cart-btn" [routerLink]=" '/cart-add/:id' ">Add to Cart </button></div>
+
+    <div class="item5"><button class="add-to-cart-btn" [routerLink]=" '/cart-add/:id' ">Add to Cart <img src = "https://cdn-icons-png.flaticon.com/512/263/263142.png" height="50" style = "background-color:orange" /> </button></div>
 
 </div>
