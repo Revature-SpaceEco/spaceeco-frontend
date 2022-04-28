@@ -3,5 +3,5 @@
   <div *ngIf="!loggedIn"  fxFlexAlign="right"><a routerLink="/register">Register</a></div>
   <div *ngIf="!loggedIn" xFlexAlign="right"><a routerLink="/login">Login</a></div>
   <div id="logout" *ngIf="loggedIn" fxFlexAlign="right" (click)="logout()">Logout</div>
-  <div fxFlexAlign="right"><mat-icon>shopping_cart</mat-icon></div>
+  <div fxFlexAlign="right" routerLink="/checkout"><mat-icon>shopping_cart</mat-icon></div>
 </mat-toolbar>
