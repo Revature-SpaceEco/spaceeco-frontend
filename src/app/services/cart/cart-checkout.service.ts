@@ -4,8 +4,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
 import { Cart } from '../../models/Cart';
+import { Order } from '../../models/Order';
 import { Products } from '../../models/Products';
 import { CartActions } from './state';
+import { CartSelectors }  from '../../services/cart/state';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +25,20 @@ export class CartCheckoutService {
     this.store.dispatch(CartActions.addItemToCart({item: item}));
   }
 
-  addProductsToCart():Observable<Products[]>{
-    return this.http.get<Products[]>(this.url+"/products");
+  getCart() {
+    return this.store.select(CartSelectors.selectAllItems);
   }
 
-  // removeProductFromCart(item: Products):boolean{
-  //   this.http.delete(`${this.url}/cart/${}`)
+  clearCart() {
+    this.store.dispatch(CartActions.clearCart());
+  }
+
+  getProductIdSelector() {
+    return this.store.select(CartSelectors.selectItem);
+  }
+
+  // completeCheckout(order: Order) {
+  //   this.http.post<Order>(`${this.string}/orders`);
+  //   this.clearCart();
   // }
 }

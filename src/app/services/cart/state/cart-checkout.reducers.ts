@@ -7,6 +7,9 @@ export const cartReducer = createReducer(
   fromState.initialState,
   on(fromActions.addItemToCart, (state, {item}) => {
     return adapter.addOne(item, state);
+  }),
+  on(fromActions.clearCart, (state) => {
+    return adapter.removeAll(state);
   })
 );
 

@@ -1,5 +1,5 @@
 <div *ngFor="let product of cart">
-
     <p>{{product.productName}}</p>
 </div>
-
+<p>{{subTotal}}</p>
+<button (click)="clearCart()">Clear Cart</button>
