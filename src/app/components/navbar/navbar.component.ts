@@ -42,8 +42,10 @@ export class NavbarComponent implements OnInit {
       this.loggedIn = true;
     }
   }
+
   logout(): void {
     localStorage.removeItem("jwt");
+    localStorage.removeItem("userId");
     this.loggedIn = false;
     this.router.navigate(['/login'])
   }
