@@ -10,29 +10,27 @@ const URL = environment.BACKEND_URL;
   providedIn: 'root'
 })
 export class AddressServiceService {
-  // userId= localStorage.getItem('userId');
+  userId= localStorage.getItem('userId');
   jwt = localStorage.getItem("jwt");
+
   httpOptions = {
     headers: new HttpHeaders({
       'Authorization': 'Bearer ' + this.jwt,
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
+      'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding, X-Auth-Token'
     })
   };
 
   constructor(private http: HttpClient) { }
-  userId: number = 1; //not final, get actually user ID in final
 
   postAddress(address: Address) {
-    return this.http.post<Address>(URL + "/users/" + this.userId +'/address', address); //fix to pass in actually users ID.
+    return this.http.post<Address>(URL + "/users/" + this.userId +'/address', address); 
   }
 
   getAddress(): Observable<Address> {
     console.log("get address call", this.jwt);
-    return this.http.get<Address>(URL + '/users/' + this.userId + '/address', this.httpOptions
-    );
+    return this.http.get<Address>(URL + '/users/' + this.userId + '/address', this.httpOptions);
   }
 
   // getOrder(){

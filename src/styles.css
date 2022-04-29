@@ -23,21 +23,6 @@ body {
   background: var(--bkg-color);
 }
 
-<<<<<<< HEAD
-button{
-  color: #222;
-  background-color: #f00;
-  /* color: white; */
-  /* btn-bg-color: rgb(11, 88, 160); */
-}
-
-button.dark-theme {
-  color: #eee;
-  background-color: #252222;
-  /* color: rgb(46, 43, 43); */
-  /* --btn-bg-color: rgb(20, 211, 195); */
-}
-=======
 .mat-simple-snackbar {
   font-size: 1.2em;
   color: white;
@@ -54,4 +39,3 @@ button.dark-theme {
 .snackbar-info {
   background-color: blue;
 }
->>>>>>> user-profile-main
