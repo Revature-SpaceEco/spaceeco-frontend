@@ -28,8 +28,8 @@ export class AuthComponent implements OnInit {
       .login(username, password)
       .subscribe({
         next: (v) => {
-          console.log(v)
           localStorage.setItem('jwt', v.body.jwt);
+          localStorage.setItem('userId', v.body.userId);
           this.router.navigate(['/profile']);
         },
         error: (e) => {

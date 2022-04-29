@@ -1,5 +1,5 @@
-import { Products } from "./Products"
+import { Product } from "./Product"
 
 export interface Cart{
-    products: Products[];
+    products: Product[];
 }
