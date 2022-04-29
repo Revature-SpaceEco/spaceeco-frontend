@@ -1,51 +1,158 @@
-<div
-  class="main-style"
-  fxLayoutAlign="center"
-  fxLayout="row"
->
+<div class="main-style" fxLayoutAlign="center" fxLayout="row">
   <mat-card class="column-left" fxLayout="column" fxLayoutAlign="start">
     <div class="image-border" fxLayoutAlign="center">
-      <img
-        id="profile-image"
-        src="../../../assets/Images/user-icon.png"
-        alt="profile image"
-      />
+      <img id="profile-image" src="../../../assets/Images/user-icon.png" alt="profile image" />
     </div>
     <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
       <h2>John Doe</h2>
       <p>john.doe@gmail.com</p>
     </mat-card>
     <mat-card class="card-color" fxLayoutAlign="center">
-      <p>Seller is verfied </p> <!-- (use userrole) -->
+      <p>Verfied Seller</p> <!-- (use userrole) -->
     </mat-card>
   </mat-card>
 
   <mat-card class="column-right">
     <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
-        <mat-card-header>
-            <h2>Payment Info</h2>
-        </mat-card-header>
-        <mat-card-content class="detail-content">
-            <p>Billing Card Type: </p>
-            <p>Biling Card Number: </p>
-            <p>Biling Name:</p>
-        </mat-card-content>
-        
+      <mat-card-header>
+        <h2>Payment Info</h2>
+      </mat-card-header>
+      <mat-card-content class="detail-content">
+        <p>Billing Card Type: </p>
+        <p>Biling Card Number: </p>
+        <p>Biling Security Number: </p>
+        <p>Biling Name: </p>
+        <p>Biling Address:</p>
+      </mat-card-content>
+
     </mat-card>
     <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
       <!--*ngIf="address">-->
       <mat-card-header>
-          <h2>Address Info</h2>
+        <h2>Address Info</h2>
       </mat-card-header>
-      <mat-card-content>
-      <p>Address Line One: <!--{{address.addressLineOne}}--></p>
-      <p>Address Line Two: <!--{{ address.addressLineTwo }} --></p>
-      <p>City: <!--{{ address.city }} --></p>
-      <p>State: <!--{{ address.state }} --></p>
-      <p>Zip code: <!--{{ address.zip }} --></p>
-      <p>Solar: <!--{{{ address.solarSystem }}  --></p>
-      <p class="planet"> Planet:  <!--{{ address.planet }} --></p>
-    </mat-card-content>
+      <div *ngIf="address; else addressNo">
+        <mat-card-content #addressYes>
+          <p>Address Line One:
+            <!--{{address.addressLineOne}}-->
+          </p>
+          <p>Address Line Two:
+            <!--{{ address.addressLineTwo }} -->
+          </p>
+          <p>City:
+            <!--{{ address.city }} -->
+          </p>
+          <p>State:
+            <!--{{ address.state }} -->
+          </p>
+          <p>Zip code:
+            <!--{{ address.zip }} -->
+          </p>
+          <p>Solar:
+            <!--{{{ address.solarSystem }}  -->
+          </p>
+          <p class="planet"> Planet:
+            <!--{{ address.planet }} -->
+          </p>
+
+        </mat-card-content>
+      </div>
+      <ng-template #addressNo>
+        <mat-card-content>
+          <form #addressForm="ngForm" (ngSubmit)="onSubmit(addressForm)">
+            <mat-form-field>
+              <input 
+                matInput type="text" 
+                name="addressLineOne" 
+                id="addressLineOne" 
+                placeholder="addressLineOne"
+                ngModel
+                required
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                matInput type="text" 
+                name="addressLineTwo" 
+                id="addressLineTwo" 
+                placeholder="addressLineTwo"
+                ngModel
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                matInput type="text" 
+                name="city" 
+                id="city" 
+                placeholder="city"
+                ngModel
+                required
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                matInput type="text" 
+                name="state" 
+                id="state" 
+                placeholder="state"
+                ngModel
+                required
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                matInput type="text" 
+                name="country" 
+                id="country" 
+                placeholder="country"
+                ngModel
+                required
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                matInput type="text" 
+                name="zip" 
+                id="zip" 
+                placeholder="zip"
+                ngModel
+                required
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                matInput type="text" 
+                name="solarSystem" 
+                id="solarSystem" 
+                placeholder="solarSystem"
+                ngModel
+                required
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <input 
+                matInput type="text" 
+                name="planet" 
+                id="planet" 
+                placeholder="planet"
+                ngModel
+                required
+              >
+            </mat-form-field>
+           
+            <div>
+              <button 
+                mat-raised-button 
+                type="submit" 
+                [disabled]="!addressForm.valid"
+              >Add Address</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </ng-template>
+
+
+
     </mat-card>
   </mat-card>
 </div>

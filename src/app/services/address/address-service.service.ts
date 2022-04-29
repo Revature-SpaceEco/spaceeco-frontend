@@ -26,7 +26,7 @@ export class AddressServiceService {
   userId: number = 1; //not final, get actually user ID in final
 
   postAddress(address: Address) {
-    return this.http.post<Address>(URL + "/address/users/" + this.userId, address); //fix to pass in actually users ID.
+    return this.http.post<Address>(URL + "/users/" + this.userId +'/address', address); //fix to pass in actually users ID.
   }
 
   getAddress(): Observable<Address> {
@@ -42,6 +42,6 @@ export class AddressServiceService {
   // }
 
   putAddress(address: Address) {
-    return this.http.put<Address>(URL + '/address/users/' + this.userId, address);
+    return this.http.put<Address>(URL + '/users/' + this.userId +'/address', address);
   }
 }
