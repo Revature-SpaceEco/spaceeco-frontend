@@ -8,6 +8,9 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  toggleDarkTheme(): void {
+    document.body.classList.toggle('dark-theme');
+  }
   loggedIn!: boolean;
 
   constructor(private router: Router) { }
