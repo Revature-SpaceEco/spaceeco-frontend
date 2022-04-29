@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+<<<<<<< HEAD
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       const jwtObj = this.getDecodedAccessToken(jwt);
@@ -34,6 +35,10 @@ export class NavbarComponent implements OnInit {
       } else {
         this.loggedIn = true;  
       }
+=======
+    if (localStorage.getItem("jwt")) {
+      this.loggedIn = true;
+>>>>>>> main-dev
     }
   }
 

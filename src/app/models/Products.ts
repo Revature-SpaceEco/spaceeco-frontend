@@ -10,7 +10,4 @@ export interface Products{
     categories: Categories[];
     productImage: string;
     productSellerId: User[];
-
-
-
 }
