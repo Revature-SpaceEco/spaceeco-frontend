@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -11,21 +11,20 @@ const url = environment.BACKEND_URL;
   providedIn: 'root',
 })
 export class AuthService {
-
   constructor(private httpClient: HttpClient) {}
 
-  login(username: string, password: string): Observable<any>{
+  login(username: string, password: string): Observable<any> {
     return this.httpClient.post<any>(
-      url+ '/authenticate',
+      url + '/authenticate',
       {
-        'username': username,
-        'password': password
+        username: username,
+        password: password,
       },
-      {'observe':'response'}
-    )
+      { observe: 'response' }
+    );
   }
-  
+
   register(data: any): Observable<any> {
-    return this.httpClient.post<any>(url + '/users', data);
+    return this.httpClient.post(url + '/users', data, { responseType: 'text' });
   }
 }

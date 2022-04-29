@@ -1,16 +1,14 @@
-<button class="back-btn" [routerLink]="'/'">Back</button>
 <div class="wrapper">
     <div *ngIf="item$ | async as item">
-        <div class="one"> <img class="product-image" src="{{item.productImage}}"> </div>
-        <div class="two"><button class="add-to-cart-btn" (click)="addItem(item)">Add to Cart </button></div>
+        <div class="one"> <img class="product-image" src="{{item.image}}"> </div>
+        <div class="two"><button class="add-to-cart-btn" (click)="addItem(item)">Add to Cart <img src = "https://cdn-icons-png.flaticon.com/512/263/263142.png" height="50" style = "background-color:orange" /></button></div>
         <div class="three">
-            <p> {{item.productName}}</p>
+            <p> {{item.name}}</p>
         </div>
         <div class="four">
-            <p> {{item.productCost}}</p>
+            <p> {{item.cost}}</p>
         </div>
         <div class="five">
-            <p> {{item.productDescription}}</p>
+            <p> {{item.description}}</p>
         </div>
     </div>
-</div>

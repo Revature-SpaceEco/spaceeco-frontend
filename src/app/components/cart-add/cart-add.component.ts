@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Products } from 'src/app/models/Products';
 import { CartCheckoutService } from 'src/app/services/cart/cart-checkout.service';
-import { ProductServiceService } from '../../services/product/product-service.service';
+import { ProductService} from '../../services/product/product.service';
 
 @Component({
   selector: 'cart-add',
@@ -14,7 +14,7 @@ export class CartAddComponent implements OnInit {
   item$: Observable<Products | undefined> ;
 
   constructor(
-    private productService: ProductServiceService,
+    private productService: ProductService,
     private cartService: CartCheckoutService,
     ) {}
 

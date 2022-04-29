@@ -1,10 +1,10 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { ProductServiceService } from './product-service.service';
+import { ProductService } from './product.service';
 
-describe('ProductServiceService', () => {
-  let service: ProductServiceService;
+describe('ProductService', () => {
+  let service: ProductService;
   let store: MockStore;
 
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('ProductServiceService', () => {
       providers: [provideMockStore({}),
       ]
     });
-    service = TestBed.inject(ProductServiceService);
+    service = TestBed.inject(ProductService);
   });
 
   it('should be created', () => {

@@ -16,7 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartAddComponent } from './components/cart-add/cart-add.component';
-import { ProductServiceService } from './services/product/product-service.service';
+import { ProductService } from './services/product/product.service';
 import { AuthComponent } from './components/auth/auth.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
@@ -78,7 +78,7 @@ import { OrderCompletedComponent } from './components/order-completed/order-comp
     ]),
     StoreRouterConnectingModule.forRoot(),
   ],
-  providers: [ProductServiceService],
+  providers: [ProductService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

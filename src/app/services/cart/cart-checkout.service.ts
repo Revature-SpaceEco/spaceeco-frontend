@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
 import { Cart } from '../../models/Cart';
 import { Order } from '../../models/Order';
-import { Products } from '../../models/Products';
+import { Product } from '../../models/Product';
 import { CartActions } from './state';
 import { CartSelectors }  from '../../services/cart/state';
 
@@ -21,7 +21,7 @@ export class CartCheckoutService {
     private store: Store<AppState>
     ) { }
 
-  addItem(item: Products) {
+  addItem(item: Product) {
     this.store.dispatch(CartActions.addItemToCart({item: item}));
   }
 

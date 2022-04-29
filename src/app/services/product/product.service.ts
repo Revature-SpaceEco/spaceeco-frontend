@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
-import { Products } from '../../models/Products';
+import { Product } from '../../models/Product';
 import { User } from '../../models/User';
 import { UserRole } from '../../models/UserRole';
 import { ProductSelectors, ProductActions } from './state';
@@ -11,7 +11,7 @@ import { ProductSelectors, ProductActions } from './state';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductServiceService {
+export class ProductService {
   // products!: Observable<Products[]>;
   // user!: Observable<User[]>;
   // userRole!: Observable<UserRole[]>;
@@ -27,10 +27,10 @@ export class ProductServiceService {
   }
 
   getProductById(id: number){
-    return this.http.get<Products>(`http://localhost:8080/products/${id}`);
+    return this.http.get<Product>(`http://localhost:8080/products/${id}`);
     }
 
   getAllProducts(){
-    return this.http.get<Products[]>(`http://localhost:8080/products`);
+    return this.http.get<Product[]>(`http://localhost:8080/products`);
   }
 }
