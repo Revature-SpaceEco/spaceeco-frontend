@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  qrimage: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,11 +38,13 @@ export class RegisterComponent implements OnInit {
       this.authService.register(this.registerForm.value).subscribe({
         next: (res) => {
           this.snackbar.success(res);
-
+          this.qrimage = JSON.parse(res)[1];
+          
+          // this.qrimage=res.
           // log the user in automatically after registration process
           const un = this.registerForm.value.username;
           const pw = this.registerForm.value.password;
-          this.login(un, pw);
+          // this.login(un, pw);
         },
         error: (err) => {
           this.snackbar.error(err.error);
@@ -50,15 +53,15 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  login(username: string, password: string) {
-    this.authService.login(username, password).subscribe({
-      next: (res) => {
-        localStorage.setItem('jwt', res.body.jwt);
-        this.route.navigate(['/profile']);
-      },
-      error: (e) => {
-        console.log(e);
-      },
-    });
-  }
+  // login(username: string, password: string,) {
+  //   this.authService.login(username, password).subscribe({
+  //     next: (res) => {
+  //       localStorage.setItem('jwt', res.body.jwt);
+  //       this.route.navigate(['/profile']);
+  //     },
+  //     error: (e) => {
+  //       console.log(e);
+  //     },
+  //   });
+  // }
 }
