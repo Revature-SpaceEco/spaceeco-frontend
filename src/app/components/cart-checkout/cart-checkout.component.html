@@ -1,8 +1,24 @@
 <!--1-> 2-> 3-->
-
-<div *ngFor="let product of cart">
-    <img [src]="product.imageUrl" alt="product-image">
-    <p>{{product.productName}}</p>
-</div>
-<p>{{subTotal}}</p>
-<button (click)="clearCart()">Clear Cart</button>
+<mat-grid-list cols="2">
+    <mat-grid-tile>
+        <div class="step-tracker">
+            <div class="circle">1</div>
+            <span>&#10230;</span>
+            <div class="circle">2</div>
+            <span>&#10230;</span>
+            <div class="circle">3</div>
+        </div>
+        <ng-container [ngSwitch]="true">
+            <app-cart (nextStep)="goToNextStep($event)" *ngSwitchCase="currentStep === 1"></app-cart>
+            <app-billing (nextStep)="goToNextStep($event)" *ngSwitchCase="currentStep === 2"></app-billing>
+            <app-shipping *ngSwitchCase="currentStep === 3"></app-shipping>
+        </ng-container>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <h3>Total:</h3>
+        <p>Subtotal: ${{subTotal}}</p>
+        <p>Shipping: $0.00</p>
+        <hr>
+        <h4>${{subTotal + shippingCost}}</h4>
+    </mat-grid-tile>
+</mat-grid-list>

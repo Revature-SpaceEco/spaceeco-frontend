@@ -1,1 +1,18 @@
-<p>cart works!</p>
+<div *ngFor="let product of cart">
+    <mat-grid-list cols="3">
+        <mat-grid-tile [rowspan]="2">
+            <img [src]="product.productImage" alt="product-image">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p>{{product.productName}}</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p>{{product.productCost}}</p>
+        </mat-grid-tile>
+        <mat-grid-tile [rowspan]="2">
+            <a href="#"><mat-icon>delete</mat-icon></a>
+        </mat-grid-tile>
+    </mat-grid-list>  
+</div>
+<button (click)="clearCart()">Clear Cart</button>
+<a class="nextStep" (click)="proceedToBilling()">Proceed to Payment<mat-icon>payments</mat-icon></a>

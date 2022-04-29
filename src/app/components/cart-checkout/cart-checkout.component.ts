@@ -11,10 +11,11 @@ import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 })
 export class CartCheckoutComponent implements OnInit {
 
-
+  currentStep: number;
   cart:Products[]=[];
   itemsObservable: Observable<Products[]>
-  subTotal: string;
+  subTotal: number;
+  shippingCost: number;
 
 
   constructor(
@@ -28,20 +29,23 @@ export class CartCheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.calculateSubTotal();
+    this.currentStep = 1;
   }
 
   // completeCheckout(order: Order) {
   //   this.cartCheckoutService.completeCheckout(order);
   // }
-
+  
+  // convert to ngrx selector
   calculateSubTotal() {
     let sum = 0;
     this.cart.forEach(item => sum += item.productCost);
-    this.subTotal = `$${sum.toFixed(2)}`;
+    // this.subTotal = `$${sum.toFixed(2)}`;
   }
 
-  clearCart(){
-    this.cartCheckoutService.clearCart();
+  goToNextStep(step: number) {
+    this.currentStep = step;
   }
+
 
 }

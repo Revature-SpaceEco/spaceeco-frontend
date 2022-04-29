@@ -16,3 +16,11 @@ export const selectItem = createSelector(
     selectRouteParams,
     (items, { id }) => items[id]
 );
+
+export const selectSubTotal = createSelector(
+    selectAllItems,
+    items => {
+        let sum = 0;
+        return sum;
+    }
+);
