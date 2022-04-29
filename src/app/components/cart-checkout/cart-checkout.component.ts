@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Products } from 'src/app/models/Products';
+import { Product } from 'src/app/models/Product';
 import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 export class CartCheckoutComponent implements OnInit {
 
 
-  cart:Products[]=[];
+  cart:Product[]=[];
 
   constructor(private cartCheckoutService: CartCheckoutService) { }
 
@@ -27,7 +27,7 @@ export class CartCheckoutComponent implements OnInit {
     })
   }
 
-  removeProductFromCart(item:Products){
+  removeProductFromCart(item:Product){
     // const idx = this.cart.findIndex(product=>product==item);
 
     // if(idx > -1) {
