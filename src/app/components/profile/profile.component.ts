@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Address } from 'src/app/models/Address';
 import { AddressServiceService } from '../../services/address/address-service.service';
+import { MatCard } from '@angular/material/card';
 
 
 @Component({
@@ -9,14 +10,13 @@ import { AddressServiceService } from '../../services/address/address-service.se
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-//address!: Observable<Address> = this.addressService.getAddress().subscribe()
-address!: Address;
+  //address!: Observable<Address> = this.addressService.getAddress().subscribe()
+  address!: Address;
   constructor(
     private addressService: AddressServiceService
-
   ) { }
 
-  getAddress(){
+  getAddress() {
     /*let obs: Observable<Address> = this.addressService.getAddress();
 
     obs.subscribe({
@@ -38,8 +38,10 @@ address!: Address;
     })
   }
 
+
   ngOnInit(): void {
     this.getAddress();
+    // this.addressService.getOrder();
   }
 
 }

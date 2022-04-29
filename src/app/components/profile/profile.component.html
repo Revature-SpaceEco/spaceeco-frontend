@@ -1,19 +1,51 @@
-<div><p>User profile pic</p></div>
-<div>
-    <p>user first and last name</p>
-    <p>user email</p>
-    <p>seller is verfied (use userrole)</p>
+<div
+  class="main-style"
+  fxLayoutAlign="center"
+  fxLayout="row"
+>
+  <mat-card class="column-left" fxLayout="column" fxLayoutAlign="start">
+    <div class="image-border" fxLayoutAlign="center">
+      <img
+        id="profile-image"
+        src="../../../assets/Images/user-icon.png"
+        alt="profile image"
+      />
+    </div>
+    <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
+      <h2>John Doe</h2>
+      <p>john.doe@gmail.com</p>
+    </mat-card>
+    <mat-card class="card-color" fxLayoutAlign="center">
+      <p>Seller is verfied </p> <!-- (use userrole) -->
+    </mat-card>
+  </mat-card>
+
+  <mat-card class="column-right">
+    <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
+        <mat-card-header>
+            <h2>Payment Info</h2>
+        </mat-card-header>
+        <mat-card-content class="detail-content">
+            <p>Billing Card Type: </p>
+            <p>Biling Card Number: </p>
+            <p>Biling Name:</p>
+        </mat-card-content>
+        
+    </mat-card>
+    <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
+      <!--*ngIf="address">-->
+      <mat-card-header>
+          <h2>Address Info</h2>
+      </mat-card-header>
+      <mat-card-content>
+      <p>Address Line One: <!--{{address.addressLineOne}}--></p>
+      <p>Address Line Two: <!--{{ address.addressLineTwo }} --></p>
+      <p>City: <!--{{ address.city }} --></p>
+      <p>State: <!--{{ address.state }} --></p>
+      <p>Zip code: <!--{{ address.zip }} --></p>
+      <p>Solar: <!--{{{ address.solarSystem }}  --></p>
+      <p class="planet"> Planet:  <!--{{ address.planet }} --></p>
+    </mat-card-content>
+    </mat-card>
+  </mat-card>
 </div>
-
-<div><p>payment info</p></div>
-
-<div  *ngIf="address">
-    <p>{{address.addressLineOne}}</p>
-    <p>{{address.addressLineTwo}}</p>
-    <p>{{address.city}}</p>
-    <p>{{address.state}}</p>
-    <p>{{address.zip}}</p>
-    <p>{{address.solarSystem}}</p>
-    <p class="planet">{{address.planet}}</p>
-</div>
-
