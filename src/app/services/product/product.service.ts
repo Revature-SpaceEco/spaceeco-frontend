@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Products } from '../../models/Products';
+import { Product } from '../../models/Product';
 import { User } from '../../models/User';
 import { UserRole } from '../../models/UserRole';
 
@@ -20,7 +20,7 @@ export class ProductService {
    }
 
    getProductById(id: number){
-     return this.http.get<Products>(`http://localhost:8080/products/${id}`);
+     return this.http.get<Product>(`http://localhost:8080/products/${id}`);
     }
 
 
