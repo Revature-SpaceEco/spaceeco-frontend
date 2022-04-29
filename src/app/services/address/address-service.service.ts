@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Address } from '../models/Address';
+import { Address } from '../../models/Address';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -10,8 +10,14 @@ const URL = environment.BACKEND_URL;
   providedIn: 'root'
 })
 export class AddressServiceService {
+  jwt = localStorage.getItem("jwt");
+  httpOptions = {
+    headers: new HttpHeaders({
+	    'Authorization': 'Bearer ' + this.jwt
+    })
+  };
 
-  constructor(private http: HttpClient) 
+  constructor(private http: HttpClient)
   { }
   userId : number = 1; //not final, get actually user ID in final
 
@@ -20,7 +26,14 @@ export class AddressServiceService {
   }
 
   getAddress(): Observable<Address> {
-    return this.http.get<Address>(URL + '/address/users/' + this.userId);
+    console.log(this.jwt)
+    return this.http.get<Address>(URL + '/users/' + this.userId + '/address',  
+    {
+      'headers': {
+      'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+      }
+    }
+);
   }
 
   putAddress(address: Address){

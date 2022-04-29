@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,10 +10,15 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  @ViewChild('errorMsg') errorMsg: ElementRef;
+
+  constructor(
+    private authService: AuthService, 
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    
+
   }
 
   onSubmit(form: NgForm) {
@@ -28,7 +33,9 @@ export class AuthComponent implements OnInit {
           this.router.navigate(['/profile']);
         },
         error: (e) => {
-          console.log(e)
+          if (e.status == 403) {
+            this.errorMsg.nativeElement.style.display = 'block';
+          }
         },
       });
     form.reset();

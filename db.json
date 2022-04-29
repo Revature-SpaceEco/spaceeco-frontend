@@ -1,0 +1,203 @@
+{
+    "addresses": [{
+            "id": 1,
+            "addressLineOne": "100 Earth St.",
+            "addressLineTwo": null,
+            "city": "Denver",
+            "state": "CO",
+            "country": "United States",
+            "zip": 80050,
+            "solarSystem": "Sun Babes",
+            "planet": "Earth"
+        },
+        {
+            "id": 2,
+            "addressLineOne": "100 Earth St.",
+            "addressLineTwo": null,
+            "city": "Denver",
+            "state": "CO",
+            "country": "United States",
+            "zip": 80050,
+            "solarSystem": "Sun Babes",
+            "planet": "Earth"
+        },
+        {
+            "id": 3,
+            "addressLineOne": "100 Earth St.",
+            "addressLineTwo": "P.O. Box 100",
+            "city": "Denver",
+            "state": "CO",
+            "country": "United States",
+            "zip": 80050,
+            "solarSystem": "Sun Babes",
+            "planet": "Earth"
+        }
+    ],
+    "products": [{
+            "productId": 1,
+            "productName": "1986 Plymouth Junkerolla",
+            "productDescription": "It can play the la cokaracha",
+            "productCost": 49999.99,
+            "categories": [{
+                "categoryId": 1,
+                "categoryName": "automobile"
+            }],
+            "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+            "productSellerId": []
+        },
+        {
+            "productId": 2,
+            "productName": "1986 Plymouth Junkerolla",
+            "productDescription": "It can play the la cokaracha",
+            "productCost": 49999.99,
+            "categories": [{
+                "categoryId": 1,
+                "categoryName": "automobile"
+            }],
+            "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+            "productSellerId": []
+        },
+        {
+            "productId": 3,
+            "productName": "1986 Plymouth Junkerolla",
+            "productDescription": "It can play the la cokaracha",
+            "productCost": 49999.99,
+            "categories": [{
+                "categoryId": 1,
+                "categoryName": "automobile"
+            }],
+            "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+            "productSellerId": []
+        },
+        {
+            "productId": 4,
+            "productName": "1986 Plymouth Junkerolla",
+            "productDescription": "It can play the la cokaracha",
+            "productCost": 49999.99,
+            "categories": [{
+                "categoryId": 1,
+                "categoryName": "automobile"
+            }],
+            "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+            "productSellerId": []
+        }
+    ],
+    "billingDetails": [{
+            "id": 1,
+            "billingCardType": "Visa",
+            "billingSecurityNumber": 123,
+            "billingName": "Peter B Parker",
+            "billingAddress": {
+                "id": 1,
+                "addressLineOne": "92 Spider Rd.",
+                "addressLineTwo": null,
+                "city": "Queens",
+                "state": "NY",
+                "country": "United States",
+                "zip": 80050,
+                "solarSystem": "Sun Babes",
+                "planet": "Earth"
+            }
+        },
+        {
+            "id": 2,
+            "billingCardType": "Mastercard",
+            "billingSecurityNumber": 111,
+            "billingName": "Mary J Watson",
+            "billingAddress": {
+                "id": 2,
+                "addressLineOne": "91 Spider Rd.",
+                "addressLineTwo": null,
+                "city": "Queens",
+                "state": "NY",
+                "country": "United States",
+                "zip": 80050,
+                "solarSystem": "Sun Babes",
+                "planet": "Earth"
+            }
+        }
+    ],
+    "orders": [{
+        "id": 1,
+        "orderProducts": [{
+                "productId": 1,
+                "productName": "1986 Plymouth Junkerolla",
+                "productDescription": "It can play the la cokaracha",
+                "productCost": 49999.99,
+                "categories": [{
+                    "categoryId": 1,
+                    "categoryName": "automobile"
+                }],
+                "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+                "productSellerId": []
+            },
+            {
+                "productId": 2,
+                "productName": "1986 Plymouth Junkerolla",
+                "productDescription": "It can play the la cokaracha",
+                "productCost": 49999.99,
+                "categories": [{
+                    "categoryId": 1,
+                    "categoryName": "automobile"
+                }],
+                "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+                "productSellerId": []
+            }
+        ],
+        "orderDate": 1649452507000,
+        "orderStatus": "pending",
+        "shippingAddress": {
+            "id": 1,
+            "addressLineOne": "92 Spider Rd.",
+            "addressLineTwo": null,
+            "city": "Queens",
+            "state": "NY",
+            "country": "United States",
+            "zip": 80050,
+            "solarSystem": "Sun Babes",
+            "planet": "Earth"
+        },
+        "orderPayment": {
+            "id": 1,
+            "paymentStatus": "pending",
+            "paymentBillingDetails": {
+                "id": 1,
+                "billingCardType": "Visa",
+                "billingSecurityNumber": 123,
+                "billingName": "Peter B Parker",
+                "billingAddress": {
+                    "id": 1,
+                    "addressLineOne": "92 Spider Rd.",
+                    "addressLineTwo": null,
+                    "city": "Queens",
+                    "state": "NY",
+                    "country": "United States",
+                    "zip": 80050,
+                    "solarSystem": "Sun Babes",
+                    "planet": "Earth"
+                }
+            }
+        }
+    }],
+    "payments": [{
+        "id": 1,
+        "paymentStatus": "pending",
+        "paymentBillingDetails": {
+            "id": 1,
+            "billingCardType": "Visa",
+            "billingSecurityNumber": 123,
+            "billingName": "Peter B Parker",
+            "billingAddress": {
+                "id": 1,
+                "addressLineOne": "92 Spider Rd.",
+                "addressLineTwo": null,
+                "city": "Queens",
+                "state": "NY",
+                "country": "United States",
+                "zip": 80050,
+                "solarSystem": "Sun Babes",
+                "planet": "Earth"
+            }
+        }
+    }]
+}

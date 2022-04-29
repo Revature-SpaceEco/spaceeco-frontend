@@ -4,8 +4,8 @@ import { Products } from 'src/app/models/Products';
 import { User } from 'src/app/models/User';
 import { UserRole } from 'src/app/models/UserRole';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ProductServiceService } from 'src/app/services/product-service.service';
+import { Router } from '@angular/router';
+import { ProductServiceService } from '../../services/product/product-service.service';
 
 @Component({
   selector: 'display-products',
@@ -21,11 +21,11 @@ export class DisplayProductsComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  
+
   getProducts(){
     this.products = this.http.get<Products[]>('http://localhost:8080/products');
   }
-  
+
   getProductById(){
     this.product = this.http.get<Products>('http://localhost:8080/products/:id');
   }
@@ -33,8 +33,8 @@ export class DisplayProductsComponent implements OnInit {
   selectProduct(productId: number){
     this.router.navigate(['/products', productId]);
   }
-  
-  
+
+
   ngOnInit(): void {
     this.getProducts();
     // console.log(this.getProducts);

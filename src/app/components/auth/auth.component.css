@@ -34,3 +34,7 @@ button:hover {
   box-shadow: 0px 1px 5px 1px #AAA;
   color: #000;
 }
+
+#error-msg {
+  display: none;
+}
