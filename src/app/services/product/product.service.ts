@@ -38,4 +38,8 @@ export class ProductService {
     return this.store.select(ProductSelectors.selectAllProducts);
   }
 
+  getCurrentProduct() {
+    return this.store.select(ProductSelectors.selectItem);
+  }
+
 }

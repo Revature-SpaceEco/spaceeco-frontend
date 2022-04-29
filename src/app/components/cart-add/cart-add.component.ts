@@ -19,10 +19,7 @@ export class CartAddComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.item$ = this.cartService.getProductIdSelector();
-    this.cartService.getRouteId().subscribe(
-      route => console.log(route)
-    );
+    this.item$ = this.productService.getCurrentProduct();
   }
 
   addItem(item: Product) {
