@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { AuthService } from '../../services/auth/auth.service';
-
-interface Role {
-  value: number;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-register',
@@ -16,16 +12,11 @@ interface Role {
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  roles: Role[] = [
-    { value: 1, viewValue: 'ROLE_BUYER' },
-    { value: 2, viewValue: 'ROLE_SELLER' },
-    { value: 3, viewValue: 'ROLE_ADMIN' },
-  ];
-
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private route: Router
+    private route: Router,
+    private snackbar: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -39,26 +30,13 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
-    //  const { username, firstName, lastName, email, password } = this.form;
-    //  this.authService.register(username, firstName, lastName, email, password).subscribe({
-    //    next: (data) => {
-    //      console.log(data);
-    //      this.isSuccessful = true;
-    //      this.isSignUpFailed = false;
-    //    },
-    //    error: (err) => {
-    //      this.errorMessage = err.error.message;
-    //      this.isSignUpFailed = true;
-    //    },
-    //  });
-  }
+  onSubmit(): void {}
 
   register() {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
         next: (res) => {
-          alert(res);
+          this.snackbar.success(res);
 
           // log the user in automatically after registration process
           const un = this.registerForm.value.username;
@@ -66,7 +44,7 @@ export class RegisterComponent implements OnInit {
           this.login(un, pw);
         },
         error: (err) => {
-          alert(err.error);
+          this.snackbar.error(err.error);
         },
       });
     }
@@ -75,7 +53,6 @@ export class RegisterComponent implements OnInit {
   login(username: string, password: string) {
     this.authService.login(username, password).subscribe({
       next: (res) => {
-        console.log(res);
         localStorage.setItem('jwt', res.body.jwt);
         this.route.navigate(['/profile']);
       },
