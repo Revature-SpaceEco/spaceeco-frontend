@@ -31,6 +31,11 @@ import { reducers } from './app.state';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { ProductEffects } from './services/product/state';
+import { CartComponent } from './components/cart/cart.component';
+import { BillingComponent } from './components/billing/billing.component';
+import { ShippingComponent } from './components/shipping/shipping.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 
 
 @NgModule({
@@ -43,6 +48,11 @@ import { ProductEffects } from './services/product/state';
     AuthComponent,
     CartCheckoutComponent,
     ProfileComponent,
+    CartComponent,
+    BillingComponent,
+    ShippingComponent,
+    ErrorPageComponent,
+    OrderCompletedComponent,
   ],
   imports: [
     FlexLayoutModule,
