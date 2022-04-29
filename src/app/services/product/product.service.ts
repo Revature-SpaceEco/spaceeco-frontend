@@ -8,7 +8,7 @@ import { UserRole } from '../../models/UserRole';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductServiceService {
+export class ProductService {
   // products!: Observable<Products[]>;
   // user!: Observable<User[]>;
   // userRole!: Observable<UserRole[]>;

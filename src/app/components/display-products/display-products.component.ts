@@ -5,7 +5,7 @@ import { User } from 'src/app/models/User';
 import { UserRole } from 'src/app/models/UserRole';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ProductServiceService } from '../../services/product/product-service.service';
+import { ProductService } from '../../services/product/product.service';
 
 @Component({
   selector: 'display-products',

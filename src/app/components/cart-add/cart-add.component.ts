@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductServiceService } from '../../services/product/product-service.service';
+import { ProductService} from '../../services/product/product.service';
 
 @Component({
   selector: 'cart-add',
@@ -8,11 +8,11 @@ import { ProductServiceService } from '../../services/product/product-service.se
   styleUrls: ['./cart-add.component.css']
 })
 export class CartAddComponent implements OnInit {
-  productService: ProductServiceService;
+  productService: ProductService;
   product: any;
   public productId: any;
 
-  constructor(productService: ProductServiceService, private route: ActivatedRoute) {this.productService = productService}
+  constructor(productService: ProductService, private route: ActivatedRoute) {this.productService = productService}
 
   ngOnInit(): void {
 

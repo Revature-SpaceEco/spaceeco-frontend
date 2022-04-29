@@ -1,5 +1,5 @@
 import { Categories } from "./Categories";
-import { User } from "./User";
+import { Seller } from "./Seller";
 
 
 export interface Products{
@@ -9,5 +9,5 @@ export interface Products{
     productCost: number;
     categories: Categories[];
     productImage: string;
-    productSellerId: User[];
+    sellerInfo: Seller[];
 }
