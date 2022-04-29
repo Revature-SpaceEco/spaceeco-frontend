@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cart } from '../../models/Cart';
-import { Products } from '../../models/Products';
+import { Product } from '../../models/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,8 @@ export class CartCheckoutService {
   
   constructor(private http:HttpClient) { }
 
-  addProductsToCart():Observable<Products[]>{
-    return this.http.get<Products[]>(this.url+"/products");
+  addProductsToCart():Observable<Product[]>{
+    return this.http.get<Product[]>(this.url+"/products");
   }
 
   // removeProductFromCart(item: Products):boolean{

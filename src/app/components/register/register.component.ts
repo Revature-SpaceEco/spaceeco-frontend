@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { AuthService } from '../../services/auth/auth.service';
-
-interface Role {
-  value: number;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-register',
@@ -16,16 +12,11 @@ interface Role {
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  roles: Role[] = [
-    { value: 1, viewValue: 'ROLE_BUYER' },
-    { value: 2, viewValue: 'ROLE_SELLER' },
-    { value: 3, viewValue: 'ROLE_ADMIN' },
-  ];
-
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService,
-    private route: Router
+    private authService: AuthService,
+    private route: Router,
+    private snackbar: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -39,33 +30,35 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
-    //  const { username, firstName, lastName, email, password } = this.form;
-    //  this.authService.register(username, firstName, lastName, email, password).subscribe({
-    //    next: (data) => {
-    //      console.log(data);
-    //      this.isSuccessful = true;
-    //      this.isSignUpFailed = false;
-    //    },
-    //    error: (err) => {
-    //      this.errorMessage = err.error.message;
-    //      this.isSignUpFailed = true;
-    //    },
-    //  });
-  }
+  onSubmit(): void {}
 
   register() {
-    console.log(this.registerForm);
     if (this.registerForm.valid) {
-      this.auth.register(this.registerForm.value).subscribe({
+      this.authService.register(this.registerForm.value).subscribe({
         next: (res) => {
-          alert('User created successfully.');
-          this.route.navigate(['login']);
+          this.snackbar.success(res);
+
+          // log the user in automatically after registration process
+          const un = this.registerForm.value.username;
+          const pw = this.registerForm.value.password;
+          this.login(un, pw);
         },
         error: (err) => {
-          console.log(err.error);
+          this.snackbar.error(err.error);
         },
       });
     }
+  }
+
+  login(username: string, password: string) {
+    this.authService.login(username, password).subscribe({
+      next: (res) => {
+        localStorage.setItem('jwt', res.body.jwt);
+        this.route.navigate(['/profile']);
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
   }
 }
