@@ -6,15 +6,34 @@
   </mat-card-header>
   <img mat-card-md-image src="../../../assets/Images/saturn-svgrepo-com.svg" alt="">
   <mat-card-content>
-    <form action="">
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
       <mat-form-field>
-        <input matInput type="text" name="username" id="username" placeholder="Username">
+        <input 
+          matInput type="text" 
+          name="username" 
+          id="username" 
+          placeholder="Username"
+          ngModel
+          required
+        >
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="password" name="password" id="password" placeholder="Password">
+        <input 
+          matInput type="password" 
+          name="password" 
+          id="password" 
+          placeholder="Password"
+          ngModel
+          required
+        >
       </mat-form-field>
+      <div #errorMsg id="error-msg">Invalid username/password</div>
       <div>
-        <button mat-raised-button type="submit">Login</button>
+        <button 
+          mat-raised-button 
+          type="submit" 
+          [disabled]="!authForm.valid"
+        >Login</button>
       </div>
     </form>
   </mat-card-content>

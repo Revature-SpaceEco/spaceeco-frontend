@@ -1,15 +1,16 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { ProductServiceService } from './product-service.service';
 
-describe('ProductServiceService', () => {
-  let service: ProductServiceService;
+import { CartCheckoutService } from './cart-checkout.service';
+
+describe('CartCheckoutService', () => {
+  let service: CartCheckoutService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [ HttpClientTestingModule ],
     });
-    service = TestBed.inject(ProductServiceService);
+    service = TestBed.inject(CartCheckoutService);
   });
 
   it('should be created', () => {
