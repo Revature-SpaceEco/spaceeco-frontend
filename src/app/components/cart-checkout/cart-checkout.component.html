@@ -1,4 +1,7 @@
+<!--1-> 2-> 3-->
+
 <div *ngFor="let product of cart">
+    <img [src]="product.imageUrl" alt="product-image">
     <p>{{product.productName}}</p>
 </div>
 <p>{{subTotal}}</p>
