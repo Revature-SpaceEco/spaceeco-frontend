@@ -21,6 +21,12 @@ export class AddressServiceService {
       'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding, X-Auth-Token'
     })
   };
+  httpOptions2 = {
+    headers: new HttpHeaders({
+      'Authorization': 'Bearer ' + this.jwt,
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -30,7 +36,7 @@ export class AddressServiceService {
 
   getAddress(): Observable<Address> {
     console.log("get address call", this.jwt);
-    return this.http.get<Address>(URL + '/users/' + this.userId + '/address', this.httpOptions);
+    return this.http.get<Address>(URL + '/users/' + this.userId + '/address', this.httpOptions2);
   }
 
   // getOrder(){
