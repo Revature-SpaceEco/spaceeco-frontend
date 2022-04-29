@@ -1,0 +1,22 @@
+.nextStep {
+	box-shadow: 0px 0px 0px 0px #ffa600;
+	background-color:#ffa600;
+	border-radius:28px;
+	border:1px solid #ffa600;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffa600;
+}
+.nextStep:hover {
+	background-color:#f0bc43;
+}
+.nextStep:active {
+	position:relative;
+	top:1px;
+}

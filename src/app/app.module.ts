@@ -27,7 +27,17 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { reducers } from './app.state';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { ProductEffects } from './services/product/state';
+import { CartComponent } from './components/cart/cart.component';
+import { BillingComponent } from './components/billing/billing.component';
+import { ShippingComponent } from './components/shipping/shipping.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
+import { RouterState } from '@ngrx/router-store';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +49,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AuthComponent,
     CartCheckoutComponent,
     ProfileComponent,
+    CartComponent,
+    BillingComponent,
+    ShippingComponent,
+    ErrorPageComponent,
+    OrderCompletedComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -54,15 +69,17 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatSelectModule,
     MatGridListModule,
+    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
+    StoreModule.forRoot(reducers, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([
+      ProductEffects.ProductEffects
+    ]),
+    StoreRouterConnectingModule.forRoot({
+      routerState: RouterState.Minimal,
     }),
-    EffectsModule.forRoot([]),
-    MatSnackBarModule,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],
