@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService,
+    private authService: AuthService,
     private route: Router
   ) {}
 
@@ -55,17 +55,33 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.registerForm);
     if (this.registerForm.valid) {
-      this.auth.register(this.registerForm.value).subscribe({
+      this.authService.register(this.registerForm.value).subscribe({
         next: (res) => {
-          alert('User created successfully.');
-          this.route.navigate(['login']);
+          alert(res);
+
+          // log the user in automatically after registration process
+          const un = this.registerForm.value.username;
+          const pw = this.registerForm.value.password;
+          this.login(un, pw);
         },
         error: (err) => {
-          console.log(err.error);
+          alert(err.error);
         },
       });
     }
+  }
+
+  login(username: string, password: string) {
+    this.authService.login(username, password).subscribe({
+      next: (res) => {
+        console.log(res);
+        localStorage.setItem('jwt', res.body.jwt);
+        this.route.navigate(['/profile']);
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
   }
 }
