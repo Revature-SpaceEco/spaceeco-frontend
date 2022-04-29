@@ -1,0 +1,31 @@
+img {
+    border-radius: 50%;
+    width: 30%;
+  }
+  .image-border{
+      border-radius: 5%;
+      border-color: #efebeb;
+      margin-bottom: 3rem;
+  }
+.main-style{
+    height: 100vh;
+    margin-top:5rem;
+    /* background-color: #f9f7dc; */
+}
+
+.column-left{
+    width: 30%;
+}
+
+.column-right{
+    width: 30%; 
+}
+
+.card-color{
+    background-color:#efebeb;
+    margin-bottom: 5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
