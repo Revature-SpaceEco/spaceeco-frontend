@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+
+  }
+
+  onSubmit(form: NgForm) {
+    const username = form.value.username;
+    const password = form.value.password;
+    this.authService
+      .login(username, password)
+      .subscribe({
+        next: (v) => {
+          console.log(v)
+          localStorage.setItem('jwt', v.body.jwt);
+          this.router.navigate(['/profile']);
+        },
+        error: (e) => {
+          console.log(e)
+        },
+      });
+    form.reset();
   }
 
 }

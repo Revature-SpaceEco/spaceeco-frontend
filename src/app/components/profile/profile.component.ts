@@ -1,8 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { AppModule } from 'src/app/app.module';
-import { AddressServiceService } from 'src/app/services/address-service.service';
+import { Component, OnInit } from '@angular/core';
 import { Address } from 'src/app/models/Address';
-import { Observable } from 'rxjs';
+import { AddressServiceService } from '../../services/address/address-service.service';
 
 
 @Component({
@@ -15,7 +13,7 @@ export class ProfileComponent implements OnInit {
 address!: Address;
   constructor(
     private addressService: AddressServiceService
-    
+
   ) { }
 
   getAddress(){
@@ -32,7 +30,7 @@ address!: Address;
         //this will be where the response body fill out our HTML objects
         this.address = data;
         console.log("Got proper respone " + this.address.addressLineOne);
-        
+
       },
       error: (err: any) => {
         console.log("Did not get address from backend" + err);

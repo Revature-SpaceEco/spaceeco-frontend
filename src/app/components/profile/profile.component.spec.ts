@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AddressServiceService } from 'src/app/services/address-service.service';
+import { AddressServiceService } from '../../services/address/address-service.service';
+import {HttpClientTestingModule } from "@angular/common/http/testing";
 import { ProfileComponent } from './profile.component';
 import { of } from 'rxjs';
 import { Address } from 'src/app/models/Address';

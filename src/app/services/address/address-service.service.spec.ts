@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AddressServiceService } from './address-service.service';
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
-import { Address } from '../models/Address';
+import  {Address} from '../../models/Address';
 
 describe('AddressServiceService', () => {
   let URL = 'http://localhost:8080';
@@ -28,7 +28,7 @@ describe('AddressServiceService', () => {
     service.getAddress().subscribe(address => {
       actualAddress = address
     })
-    const req = httpTestingController.expectOne(URL + '/address/users/1');
+    const req = httpTestingController.expectOne(URL + '/users/1/address');
 
     req.flush({
       id: 1,

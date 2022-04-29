@@ -14,12 +14,20 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisplayProductsComponent } from './components/display-products/display-products.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CartAddComponent } from './components/cart-add/cart-add.component';
-import { ProductServiceService } from './services/product-service.service';
+import { ProductServiceService } from './services/product/product-service.service';
 import { AuthComponent } from './components/auth/auth.component';
 import { MatSelectModule } from '@angular/material/select';
+import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+
 
 @NgModule({
   declarations: [
@@ -29,8 +37,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     NavbarComponent,
     CartAddComponent,
     AuthComponent,
-    ProfileComponent
-
+    CartCheckoutComponent,
+    ProfileComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -45,8 +53,14 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatGridListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
   ],
   providers: [ProductServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
