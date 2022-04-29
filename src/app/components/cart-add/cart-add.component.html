@@ -1,20 +1,9 @@
 <button class = "back-btn" [routerLink]="'/'">Back</button>
 <div class="wrapper">
     <div class="one"> <img class = "product-image" src = "{{product.productImage}}" > </div>
-    <div class="two"><button class="add-to-cart-btn" (click)="addItem(product)">Add to Cart </button></div>
+    <div class="two"><button class="add-to-cart-btn" [routerLink]=" '/cart-add/:id' ">Add to Cart <img src = "https://cdn-icons-png.flaticon.com/512/263/263142.png" height="50" style = "background-color:orange" /> </button>
+    <!-- <div class="two"><button class="add-to-cart-btn" (click)="addItem(product)">Add to Cart </button></div> -->
     <div class="three"><p> {{product.productName}}</p></div>
     <div class="four"><p> {{product.productCost}}</p></div>
     <div class="five"><p> {{product.productDescription}}</p></div>
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
