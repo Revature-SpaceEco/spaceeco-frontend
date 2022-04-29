@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Product } from 'src/app/models/Product';
 import { Order } from '../../models/Order';
 import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
@@ -14,8 +14,8 @@ export class CartCheckoutComponent implements OnInit {
   currentStep: number;
   cart:Product[]=[];
   itemsObservable: Observable<Product[]>
+  shippingCost: number = 1.00;
   subTotal: number;
-  shippingCost: number;
 
 
   constructor(
@@ -25,10 +25,12 @@ export class CartCheckoutComponent implements OnInit {
       this.itemsObservable.subscribe((items) => {
         items.forEach(item => this.cart.push(item))
       })
+      this.cartCheckoutService.getSubTotal().subscribe(sub =>
+        this.subTotal = sub
+      );
     }
 
   ngOnInit(): void {
-    this.calculateSubTotal();
     this.currentStep = 1;
   }
 
@@ -37,11 +39,11 @@ export class CartCheckoutComponent implements OnInit {
   // }
   
   // convert to ngrx selector
-  calculateSubTotal() {
-    let sum = 0;
-    this.cart.forEach(item => sum += item.cost);
-    // this.subTotal = `$${sum.toFixed(2)}`;
-  }
+  // calculateSubTotal() {
+  //   let sum = 0;
+  //   this.cart.forEach(item => sum += item.cost);
+  //   // this.subTotal = `$${sum.toFixed(2)}`;
+  // }
 
   goToNextStep(step: number) {
     this.currentStep = step;

@@ -1,45 +1,50 @@
 <div>
     <div>
         <h3>Billing</h3>
+        <form id="billingForm billingDetails" [formGroup]="billingForm">
+            <h4>Payment Information</h4>
+            <div>
+                <label for="billingName"><mat-icon>person</mat-icon> Name</label>
+                <input type="text" id="billingName" name="fullName" placeholder="Full Name on card">
 
-        <h4>Payment Information</h4>
-        <div>
-        <label for="billingName"><mat-icon>person</mat-icon> Name</label>
-        <input type="text" id="billingName" name="fullName" placeholder="Full Name on card">
+                <label for="billingCardType"><mat-icon>credit_card</mat-icon> Card Type</label>
+                <input type="text" id="billingCardType" name="fullName" placeholder="Full Name on card">
 
-        <label for="billingCardNumber"><mat-icon>credit_card</mat-icon> Card Number</label>
-        <input type="text" id="billingCardNumber" name="billingCardNumber" placeholder="Credit Card Number">
+                <label for="billingCardNumber"><mat-icon>credit_card</mat-icon> Card Number</label>
+                <input type="text" id="billingCardNumber" name="billingCardNumber" placeholder="Credit Card Number">
 
-        <label for="billingSecurityNumber">CVV</label>
-        <input type="text" id="billingSecurityNumber" name="billingSecurityNumber" placeholder="Card CVV Number">
-      </div>
+                <label for="billingSecurityNumber">CVV</label>
+                <input type="text" id="billingSecurityNumber" name="billingSecurityNumber" placeholder="Card CVV Number">
+            </div>
+        </form>
+        <form id="billingAddressForm" [formGroup]="billingAddressForm">
+            <h4>Billing Address</h4>
+            <div>
+                <label for="addressLineOne">Street Address</label>
+                <input type="text" id="addressLineOne" name="addressLineOne" placeholder="Street Address">
 
-        <h4>Billing Address</h4>
-        <div>
-            <label for="addressLineOne">Street Address</label>
-            <input type="text" id="addressLineOne" name="addressLineOne" placeholder="Street Address">
+                <label for="addressLineTwo">Card Name</label>
+                <input type="text" id="addressLineTwo" name="addressLineTwo" placeholder="Addtional address information">
 
-            <label for="addressLineTwo">Card Name</label>
-            <input type="text" id="addressLineTwo" name="addressLineTwo" placeholder="Addtional address information">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Enter City">
 
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="Enter City">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="Enter State">
 
-            <label for="state">State</label>
-            <input type="text" id="state" name="state" placeholder="Enter State">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="Enter Country">
 
-            <label for="country">Country</label>
-            <input type="text" id="country" name="country" placeholder="Enter Country">
+                <label for="zip">Zipcode/Postal Code</label>
+                <input type="text" id="zip" name="zip" placeholder="Enter Zipcode/Postal Code">
 
-            <label for="zip">Zipcode/Postal Code</label>
-            <input type="text" id="zip" name="zip" placeholder="Enter Zipcode/Postal Code">
+                <label for="planet">Planet</label>
+                <input type="text" id="planet" name="planet" placeholder="Enter Planet/Galactic Coordinates">
 
-            <label for="planet">Planet</label>
-            <input type="text" id="planet" name="planet" placeholder="Enter Planet/Galactic Coordinates">
-
-            <label for="solarSystem">Solar System</label>
-            <input type="text" id="solarSystem" name="solarSystem" placeholder="Enter Solar System">
-        </div>
+                <label for="solarSystem">Solar System</label>
+                <input type="text" id="solarSystem" name="solarSystem" placeholder="Enter Solar System">
+            </div>
+        </form>
     </div>
     <a class="nextStep" (click)="proceedToShipping()">Proceed to Shipping<mat-icon>local_shipping</mat-icon></a>
 </div>

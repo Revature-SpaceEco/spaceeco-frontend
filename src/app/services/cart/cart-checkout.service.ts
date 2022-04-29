@@ -8,6 +8,9 @@ import { Order } from '../../models/Order';
 import { Product } from '../../models/Product';
 import { CartActions } from './state';
 import { CartSelectors }  from '../../services/cart/state';
+import { selectCurrentRoute,  } from '../router/state/router.selectors';
+import { selectRouteId } from './state/cart-checkout.selectors';
+import { ProductSelectors } from '../product/state';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +37,19 @@ export class CartCheckoutService {
   }
 
   getProductIdSelector() {
-    return this.store.select(CartSelectors.selectItem);
+    return this.store.select(ProductSelectors.selectItem);
+  }
+
+  getSubTotal() {
+    return this.store.select(CartSelectors.selectSubTotal);
+  }
+
+  getCurrentRoute() {
+    return this.store.select(selectCurrentRoute);
+  }
+
+  getRouteId() {
+    return this.store.select(selectRouteId);
   }
 
   // completeCheckout(order: Order) {

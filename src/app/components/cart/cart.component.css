@@ -1,4 +1,4 @@
-.nextStep {
+.next {
 	box-shadow: 0px 0px 0px 0px #ffa600;
 	background-color:#ffa600;
 	border-radius:28px;
@@ -13,10 +13,20 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffa600;
 }
-.nextStep:hover {
+.next:hover {
 	background-color:#f0bc43;
 }
-.nextStep:active {
+.next:active {
 	position:relative;
 	top:1px;
+}
+
+.clear-cart .clear-cart:active {
+	text-decoration: none;
+	color:black
+}
+
+.clear-cart:focus {
+	text-decoration: none;
+	color: #B22727;
 }

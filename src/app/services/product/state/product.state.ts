@@ -1,13 +1,10 @@
 import { EntityState } from "@ngrx/entity";
-import { Products } from "../../../models/Products";
+import { Product } from "../../../models/Product";
 import { adapter } from "./product.adapters";
 
-export interface State extends EntityState<Products> {
+export interface State extends EntityState<Product> {
 
 }
 
 export const initialState: State = adapter.getInitialState();
-export function State(arg0: string) {
-  throw new Error("Function not implemented.");
-}
 

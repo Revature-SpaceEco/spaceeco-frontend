@@ -8,4 +8,8 @@ export const productReducer = createReducer(
     on(fromActions.loadProductsSuccess, (state, { catalogue }) => {
         return adapter.setAll(catalogue, state);
     })
-)
+);
+
+export function reducer(state: fromState.State | undefined, action: Action): fromState.State {
+    return productReducer(state, action);
+}

@@ -36,6 +36,7 @@ import { BillingComponent } from './components/billing/billing.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
+import { RouterState } from '@ngrx/router-store';
 
 
 @NgModule({
@@ -76,7 +77,9 @@ import { OrderCompletedComponent } from './components/order-completed/order-comp
     EffectsModule.forRoot([
       ProductEffects.ProductEffects
     ]),
-    StoreRouterConnectingModule.forRoot(),
+    StoreRouterConnectingModule.forRoot({
+      routerState: RouterState.Minimal,
+    }),
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],

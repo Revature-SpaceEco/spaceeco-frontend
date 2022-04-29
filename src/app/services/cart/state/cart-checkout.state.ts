@@ -1,8 +1,8 @@
 import { EntityState } from "@ngrx/entity";
-import { Products } from "src/app/models/Products";
+import { Product } from "src/app/models/Product";
 import { adapter } from "./cart-checkout.adapters";
 
-export interface State extends EntityState<Products> {
+export interface State extends EntityState<Product> {
   // no additional properties
 }
 

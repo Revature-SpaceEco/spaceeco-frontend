@@ -9,15 +9,13 @@ import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.
 import { BillingComponent } from './components/billing/billing.component'
 
 const routes: Routes = [
-  {path: '', component: DisplayProductsComponent},
-  { path:'profile', component: ProfileComponent},
-  {path: 'cart-add', component: CartAddComponent},
-  {path: 'products/:id', component: CartAddComponent},
-  {path:'login', component: AuthComponent},
+  { path: '', component: DisplayProductsComponent },
+  { path:'profile', component: ProfileComponent },
+  { path: 'products/:id', component: CartAddComponent },
+  { path:'login', component: AuthComponent},
   { path: 'register', component: RegisterComponent },
-  { path: 'checkout', component: CartCheckoutComponent},
-  { path: 'billing', component: BillingComponent},
-  { path: '**', component: DisplayProductsComponent}, // Create a 404 Page
+  { path: 'checkout', component: CartCheckoutComponent },
+  { path: '**', component: DisplayProductsComponent }, // Create a 404 Page
 ];
 
 

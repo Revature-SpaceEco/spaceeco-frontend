@@ -33,4 +33,9 @@ export class ProductService {
   getAllProducts(){
     return this.http.get<Product[]>(`http://localhost:8080/products`);
   }
+
+  selectAllProducts(){
+    return this.store.select(ProductSelectors.selectAllProducts);
+  }
+
 }

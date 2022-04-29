@@ -9,12 +9,12 @@
             <div class="circle">3</div>
         </div>
         <ng-container [ngSwitch]="true">
-            <app-cart (nextStep)="goToNextStep($event)" *ngSwitchCase="currentStep === 1"></app-cart>
+            <app-cart (nextStep)="goToNextStep($event)" *ngSwitchCase="currentStep === 1" [cart]="cart"></app-cart>
             <app-billing (nextStep)="goToNextStep($event)" *ngSwitchCase="currentStep === 2"></app-billing>
             <app-shipping *ngSwitchCase="currentStep === 3"></app-shipping>
         </ng-container>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile *ngIf="subTotal">
         <h3>Total:</h3>
         <p>Subtotal: ${{subTotal}}</p>
         <p>Shipping: $0.00</p>

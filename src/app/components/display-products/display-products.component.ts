@@ -14,32 +14,25 @@ import { ProductService } from '../../services/product/product.service';
 })
 export class DisplayProductsComponent implements OnInit {
   products!: Observable<Product[]>;
-  user!: Observable<User[]>;
-  userRole!: Observable<UserRole[]>;
-  product: any;
 
-
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    ) { }
 
 
   getProducts(){
-    this.products = this.http.get<Product[]>('http://localhost:8080/products');
-  }
-
-  getProductById(){
-    this.product = this.http.get<Product>('http://localhost:8080/products/:id');
+    this.productService.loadProductsFromApi();
+    this.products = this.productService.selectAllProducts();
   }
 
   selectProduct(productId: number){
     this.router.navigate(['/products', productId]);
   }
 
-
   ngOnInit(): void {
     this.getProducts();
-    // console.log(this.getProducts);
 
-    this.getProductById();
   }
 
 }

@@ -2,14 +2,15 @@ import { Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of, tap } from "rxjs";
-import { ProductServiceService } from "../product-service.service";
+import { ProductService } from "../product.service";
+
 import * as fromActions from './product.actions';
 
 @Injectable()
 export class ProductEffects {
     constructor(
         private actions$: Actions,
-        private productService: ProductServiceService,
+        private productService: ProductService,
         private snackbar: MatSnackBar
     )
     {}

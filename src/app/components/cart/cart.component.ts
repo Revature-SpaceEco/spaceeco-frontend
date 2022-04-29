@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Products } from 'src/app/models/Products';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Product } from 'src/app/models/Product';
 import { CartCheckoutService } from 'src/app/services/cart/cart-checkout.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { CartCheckoutService } from 'src/app/services/cart/cart-checkout.service
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cart:Products[]=[];
+  @Input() cart: Product[];
   @Output() nextStep = new EventEmitter<number>();
 
   constructor(private cartCheckoutService: CartCheckoutService) { }
