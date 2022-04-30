@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -37,7 +36,11 @@ import { ShippingComponent } from './components/shipping/shipping.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 import { RouterState } from '@ngrx/router-store';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+    return localStorage.getItem("jwt");
+}
 
 @NgModule({
   declarations: [
@@ -53,7 +56,7 @@ import { RouterState } from '@ngrx/router-store';
     BillingComponent,
     ShippingComponent,
     ErrorPageComponent,
-    OrderCompletedComponent,
+    OrderCompletedComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -79,7 +82,21 @@ import { RouterState } from '@ngrx/router-store';
     ]),
     StoreRouterConnectingModule.forRoot({
       routerState: RouterState.Minimal,
-    }),
+    }), 
+    JwtModule.forRoot({
+        config: {
+            tokenGetter: tokenGetter,
+
+            // WARN do not use wildcard in production
+            // Set this to cloud address when deploying
+            allowedDomains: ["localhost:8080"],
+
+            // Set this for routes that do not send authorization 
+            // in header
+            //disallowedRoutes: []
+            skipWhenExpired: false // we handle this explicitly
+        },
+    }) 
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],
