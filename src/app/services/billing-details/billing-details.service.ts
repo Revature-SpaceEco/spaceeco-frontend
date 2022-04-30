@@ -19,6 +19,8 @@ export class BillingDetailsService {
 
   constructor(private http: HttpClient) { }
 
+  // post and get
+
   addBillingDetails(billing: BillingDetails) {
     return this.http.post<BillingDetails>(URL + "users/" + this.userId + "/billing", billing);
   }
