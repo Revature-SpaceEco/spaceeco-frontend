@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private route: Router,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(QrDialog);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.register();
+    })
+  }
 
   register() {
     if (this.registerForm.valid) {
@@ -62,3 +72,9 @@ export class RegisterComponent implements OnInit {
     });
   }
 }
+
+@Component({
+  selector: 'qr-dialog',
+  templateUrl: 'qr-dialog.html',
+})
+export class QrDialog {}
