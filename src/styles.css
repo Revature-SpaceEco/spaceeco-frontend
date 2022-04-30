@@ -7,6 +7,22 @@ body {
   padding: 0px;
 }
 
+body{
+  color: #222;
+  background-color: #f00;
+  /* color: white; */
+  /* btn-bg-color: rgb(11, 88, 160); */
+}
+body.dark-theme {
+  color: #eee;
+  background-color: #252222;
+  /* color: rgb(46, 43, 43); */
+  /* --btn-bg-color: rgb(20, 211, 195); */
+}
+body {
+  background: var(--bkg-color);
+}
+
 .mat-simple-snackbar {
   font-size: 1.2em;
   color: white;

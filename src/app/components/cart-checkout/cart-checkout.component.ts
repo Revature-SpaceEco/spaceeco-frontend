@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Product } from 'src/app/models/Product';
+import { Order } from '../../models/Order';
 import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 
 @Component({
@@ -9,30 +11,43 @@ import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 })
 export class CartCheckoutComponent implements OnInit {
 
-
+  currentStep: number;
   cart:Product[]=[];
+  itemsObservable: Observable<Product[]>
+  shippingCost: number = 1.00;
+  subTotal: number;
 
-  constructor(private cartCheckoutService: CartCheckoutService) { }
+
+  constructor(
+    private cartCheckoutService: CartCheckoutService) {
+      this.itemsObservable = this.cartCheckoutService.getCart();
+
+      this.itemsObservable.subscribe((items) => {
+        items.forEach(item => this.cart.push(item))
+      })
+      this.cartCheckoutService.getSubTotal().subscribe(sub =>
+        this.subTotal = sub
+      );
+    }
 
   ngOnInit(): void {
-    this.addProductsToCart();
-    console.log(this.cart);
+    this.currentStep = 1;
   }
 
-  addProductsToCart(){
+  // completeCheckout(order: Order) {
+  //   this.cartCheckoutService.completeCheckout(order);
+  // }
+  
+  // convert to ngrx selector
+  // calculateSubTotal() {
+  //   let sum = 0;
+  //   this.cart.forEach(item => sum += item.cost);
+  //   // this.subTotal = `$${sum.toFixed(2)}`;
+  // }
 
-    this.cartCheckoutService.addProductsToCart()
-    .subscribe(products=>{
-      products.forEach(product=>this.cart.push(product))
-    })
+  goToNextStep(step: number) {
+    this.currentStep = step;
   }
 
-  removeProductFromCart(item:Product){
-    // const idx = this.cart.findIndex(product=>product==item);
 
-    // if(idx > -1) {
-    //   this.cart[idx] =
-
-    // }
-  }
 }

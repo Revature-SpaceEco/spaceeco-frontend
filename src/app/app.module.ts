@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -27,7 +26,21 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { reducers } from './app.state';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { ProductEffects } from './services/product/state';
+import { CartComponent } from './components/cart/cart.component';
+import { BillingComponent } from './components/billing/billing.component';
+import { ShippingComponent } from './components/shipping/shipping.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
+import { RouterState } from '@ngrx/router-store';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+    return localStorage.getItem("jwt");
+}
 
 @NgModule({
   declarations: [
@@ -39,6 +52,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AuthComponent,
     CartCheckoutComponent,
     ProfileComponent,
+    CartComponent,
+    BillingComponent,
+    ShippingComponent,
+    ErrorPageComponent,
+    OrderCompletedComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -54,15 +72,31 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatSelectModule,
     MatGridListModule,
+    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
-    EffectsModule.forRoot([]),
-    MatSnackBarModule,
+    StoreModule.forRoot(reducers, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([
+      ProductEffects.ProductEffects
+    ]),
+    StoreRouterConnectingModule.forRoot({
+      routerState: RouterState.Minimal,
+    }), 
+    JwtModule.forRoot({
+        config: {
+            tokenGetter: tokenGetter,
+
+            // WARN do not use wildcard in production
+            // Set this to cloud address when deploying
+            allowedDomains: ["localhost:8080"],
+
+            // Set this for routes that do not send authorization 
+            // in header
+            //disallowedRoutes: []
+            skipWhenExpired: false // we handle this explicitly
+        },
+    }) 
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],
