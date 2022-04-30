@@ -15,15 +15,14 @@ export class AddressServiceService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Authorization': 'Bearer ' + this.jwt,
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding, X-Auth-Token'
     })
   };
+
   httpOptions2 = {
     headers: new HttpHeaders({
-      'Authorization': 'Bearer ' + this.jwt,
       'Content-Type': 'application/json'
     })
   };
