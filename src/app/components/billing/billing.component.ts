@@ -3,6 +3,8 @@ import { BillingDetails } from 'src/app/models/BillingDetails';
 import { BillingDetailsService } from 'src/app/services/billing-details/billing-details.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Address } from 'src/app/models/Address';
+import { AddressServiceService } from 'src/app/services/address/address-service.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-billing',
@@ -20,7 +22,12 @@ export class BillingComponent implements OnInit {
 
   billingDetails: BillingDetails;
 
-  constructor(private fb: FormBuilder, private billingService: BillingDetailsService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private billingService: BillingDetailsService,
+    private addressService: AddressServiceService,
+    private snackBarService: SnackbarService,
+    ) { }
 
   ngOnInit(): void {
     this.billingForm = this.fb.group({
@@ -39,28 +46,37 @@ export class BillingComponent implements OnInit {
       zip: new FormControl('', Validators.required),
       planet: new FormControl('', Validators.required),
       solarSystem: new FormControl('', Validators.required),
-    })
+    });
   }
 
   proceedToShipping() {
     this.nextStep.emit(3);
-    const billingAddress = this.billingAddressForm.value;
-    const billingInfo = this.billingForm.value;
 
-    // map billing addess to addess model
-    // finalAddress.addressLineOne: string,
-    // addressLineTwo?: string,
-    // city: string,
-    // state: string,
-    // country: string,
-    // zip: string,
-    // solarSystem: string,
-    // planet: string
+    if (this.billingForm.valid || this.billingAddressForm.valid){
+      this.finalBillingDetails.billingCardType = this.billingForm.value.billingCardType;
+      this.finalBillingDetails.billingCardNumber = this.billingForm.value.billingCardNumber;
+      this.finalBillingDetails.billingSecurityNumber = this.billingForm.value.billingSecurityNumber;
+      this.finalBillingDetails.billingName = this.billingForm.value.billingName;
 
-    //billing info and to billing details, add in address model
+      this.finalAddress.addressLineOne = this.billingAddressForm.value.addressLineOne;
+      this.finalAddress.addressLineTwo = this.billingAddressForm.value.addressLineTwo;
+      this.finalAddress.city = this.billingAddressForm.value.city;
+      this.finalAddress.state = this.billingAddressForm.value.state;
+      this.finalAddress.country = this.billingAddressForm.value.country;
+      this.finalAddress.zip = this.billingAddressForm.value.zip;
+      this.finalAddress.solarSystem = this.billingAddressForm.value.solarSystem;
+      this.finalAddress.planet = this.billingAddressForm.value.planet;
 
-    // this.billingService.addBillingDetails(finalBillingDetails);
+      this.addressService.postAddress(this.finalAddress);
 
+      this.finalBillingDetails.billingAddress = this.finalAddress;
+
+      this.billingService.addBillingDetails(this.finalBillingDetails);
+
+      this.snackBarService.success("billing information saved");
+
+    } else {
+        this.snackBarService.error("check the values");
+    }
   }
-
 }

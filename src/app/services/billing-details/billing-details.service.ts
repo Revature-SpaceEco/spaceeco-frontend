@@ -10,7 +10,7 @@ const URL = environment.BACKEND_URL;
 })
 export class BillingDetailsService {
   jwt = localStorage.getItem("jwt");
-  userId = 1; //placeholder, need to save uId in localStorage, then get
+  userId = 1; //placeholder, need to use state
   httpOptions = {
     headers: new HttpHeaders({
       'Authorization': 'Bearer ' + this.jwt
@@ -25,4 +25,7 @@ export class BillingDetailsService {
     return this.http.post<BillingDetails>(URL + "users/" + this.userId + "/billing", billing);
   }
 
+  getBillingDetails(billingId: string) {
+    return this.http.get<BillingDetails>(URL + "users/" + this.userId + "/billing" + billingId);
+  }
 }

@@ -2,30 +2,34 @@
     <h3>Shipping Information</h3>
 
     <div>
-        <h4>Address</h4>
-        <label for="addressLineOne">Street Address</label>
-        <input type="text" id="addressLineOne" name="addressLineOne" placeholder="Street Address">
+        <form id="shippingAddressForm" [formGroup]="shippingAddressForm">
+            <h4>Shippings Address</h4>
+            <div>
+                <label for="addressLineOne">Street Address</label>
+                <input type="text" id="addressLineOne" name="addressLineOne" placeholder="Street Address">
 
-        <label for="addressLineTwo">Card Name</label>
-        <input type="text" id="addressLineTwo" name="addressLineTwo" placeholder="Addtional address information">
+                <label for="addressLineTwo">Card Name</label>
+                <input type="text" id="addressLineTwo" name="addressLineTwo" placeholder="Addtional address information">
 
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" placeholder="Enter City">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Enter City">
 
-        <label for="state">State</label>
-        <input type="text" id="state" name="state" placeholder="Enter State">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="Enter State">
 
-        <label for="country">Country</label>
-        <input type="text" id="country" name="country" placeholder="Enter Country">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="Enter Country">
 
-        <label for="zip">Zipcode/Postal Code</label>
-        <input type="text" id="zip" name="zip" placeholder="Enter Zipcode/Postal Code">
+                <label for="zip">Zipcode/Postal Code</label>
+                <input type="text" id="zip" name="zip" placeholder="Enter Zipcode/Postal Code">
 
-        <label for="planet">Planet</label>
-        <input type="text" id="planet" name="planet" placeholder="Enter Planet/Galactic Coordinates">
+                <label for="planet">Planet</label>
+                <input type="text" id="planet" name="planet" placeholder="Enter Planet/Galactic Coordinates">
 
-        <label for="solarSystem">Solar System</label>
-        <input type="text" id="solarSystem" name="solarSystem" placeholder="Enter Solar System">
+                <label for="solarSystem">Solar System</label>
+                <input type="text" id="solarSystem" name="solarSystem" placeholder="Enter Solar System">
+            </div>
+        </form>
     </div>
     <a class="nextStep">Checkout<mat-icon>shopping_cart_checkout</mat-icon></a>
 </div>
