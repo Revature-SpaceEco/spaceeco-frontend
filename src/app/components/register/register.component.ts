@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { AuthService } from '../../services/auth/auth.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -80,4 +80,8 @@ export class RegisterComponent implements OnInit {
   selector: 'qr-dialog',
   templateUrl: 'qr-dialog.html',
 })
-export class QrDialog {}
+export class QrDialog {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+
+}
