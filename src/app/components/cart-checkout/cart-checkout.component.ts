@@ -31,7 +31,7 @@ export class CartCheckoutComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.currentStep = 1;
+    this.currentStep = 1;  
   }
 
   // completeCheckout(order: Order) {
