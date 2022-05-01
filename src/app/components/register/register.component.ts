@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { switchMap } from 'rxjs/operators';
+import { UserDTO } from 'src/app/models/UserDTO';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +14,6 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
-  qrimage: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,45 +36,25 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {}
 
-  openDialog() {
-    const dialogRef = this.dialog.open(QrDialog);
-
-    dialogRef.afterClosed().subscribe(() => {
-      this.register();
-    })
-  }
-
   register() {
     if (this.registerForm.valid) {
-      this.authService.register(this.registerForm.value).subscribe({
-        next: (res) => {
-          this.snackbar.success(res);
-          this.qrimage = JSON.parse(res)[1];
-          
-          // this.qrimage=res.
-          // log the user in automatically after registration process
-          const un = this.registerForm.value.username;
-          const pw = this.registerForm.value.password;
-          // this.login(un, pw);
-        },
-        error: (err) => {
-          this.snackbar.error(err.error);
-        },
+      this.authService.register(this.registerForm.value).pipe(
+        switchMap(response => {
+          console.log(response);
+          const dialogRef = this.dialog.open(QrDialog, {
+            data: response,
+          });
+          return dialogRef.afterClosed();
+        })
+      ).subscribe({
+        error: (err) => { console.log(err); },
+        complete: () => {
+          this.route.navigate(['/login']); 
+        }
       });
     }
   }
 
-  // login(username: string, password: string,) {
-  //   this.authService.login(username, password).subscribe({
-  //     next: (res) => {
-  //       localStorage.setItem('jwt', res.body.jwt);
-  //       this.route.navigate(['/profile']);
-  //     },
-  //     error: (e) => {
-  //       console.log(e);
-  //     },
-  //   });
-  // }
 }
 
 @Component({
@@ -81,7 +62,12 @@ export class RegisterComponent implements OnInit {
   templateUrl: 'qr-dialog.html',
 })
 export class QrDialog {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    qrCode: string;
 
+    constructor(@Inject(MAT_DIALOG_DATA) public data: UserDTO) {}
 
+    ngOnInit() {
+      this.qrCode = this.data.qrCode;
+      console.log(this.qrCode);
+    }
 }

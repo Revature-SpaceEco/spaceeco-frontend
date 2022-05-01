@@ -49,7 +49,7 @@
       </mat-form-field> -->
 
       <div>
-        <button mat-raised-button (click)="openDialog()">Register</button>
+        <button mat-raised-button (click)="register()">Register</button>
       </div>
 
       <div style="margin: 15px">
@@ -58,6 +58,3 @@
     </form>
   </mat-card-content>
 </mat-card>
-<div *ngIf = "qrimage">
-  <img [src]="qrimage" alt="QR Code">
-</div>
