@@ -32,6 +32,10 @@ export class CartCheckoutService {
     return this.store.select(CartSelectors.selectAllItems);
   }
 
+  removeFromCart(item: Product) {
+    this.store.dispatch(CartActions.removeFromCart({item: item}));
+  }
+
   clearCart() {
     this.store.dispatch(CartActions.clearCart());
   }

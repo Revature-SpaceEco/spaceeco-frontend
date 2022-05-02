@@ -73,10 +73,10 @@ export class BillingComponent implements OnInit {
 
       this.billingService.addBillingDetails(this.finalBillingDetails);
 
-      this.snackBarService.success("billing information saved");
+      this.snackBarService.success("Billing information saved");
 
     } else {
-        this.snackBarService.error("check the values");
+        this.snackBarService.error("Check the values");
     }
   }
 }

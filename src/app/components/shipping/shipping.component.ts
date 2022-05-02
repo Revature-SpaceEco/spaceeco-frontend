@@ -58,7 +58,7 @@ export class ShippingComponent implements OnInit {
         this.order.shippingAddress = this.finalAddress;
         this.order.orderProducts = items
         this.orderService.addOrder(this.order);
-        this.snackBarService.success("shipping information saved");
+        this.snackBarService.success("Shipping information saved");
         //add payment info from billing service
         }
       );

@@ -1,5 +1,5 @@
-<ng-container *ngIf="cart.length; else emptyCart">
-    <div *ngFor="let product of cart">
+<ng-container *ngIf="currentCart.length; else emptyCart">
+    <div *ngFor="let product of currentCart">
         <div class="col">
             <img [src]="product.image" alt="product-image" class="product-image">
         </div>
@@ -8,12 +8,12 @@
             <h3>${{(product.cost).toFixed(2)}}</h3>
         </div>
         <div class="col">
-            <a href="#">
+            <a class="remove-cart" (click)="removeFromCart(product)">
                 <mat-icon>delete</mat-icon>
             </a>
         </div>
     </div>
-    <a class="clear-cart" href="#" (click)="clearCart()">Clear Cart<mat-icon>remove_shopping_cart</mat-icon></a>
+    <a class="clear-cart" (click)="clearCart()">Clear Cart<mat-icon>remove_shopping_cart</mat-icon></a>
     <a class="next" (click)="proceedToBilling()">Proceed to Payment<mat-icon>payments</mat-icon></a>
 </ng-container>
 <ng-template #emptyCart>

@@ -39,12 +39,16 @@
 }
 
 /* Clear Cart Icon*/
-.clear-cart .clear-cart:active {
+.clear-cart, .clear-cart:active {
 	text-decoration: none;
 	color:black
 }
 
-.clear-cart:focus {
+.clear-cart:focus, .clear-cart:hover {
 	text-decoration: none;
+}
+
+.remove-cart:hover, .clear-cart:hover{
+	cursor: pointer;
 	color: #B22727;
 }
