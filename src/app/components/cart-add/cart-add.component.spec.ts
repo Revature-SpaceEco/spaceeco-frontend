@@ -4,6 +4,8 @@ import { CartAddComponent } from './cart-add.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ProductService } from '../../services/product/product.service';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 
 
@@ -15,9 +17,9 @@ describe('CartAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, RouterTestingModule],
+      imports: [ HttpClientTestingModule, RouterTestingModule, MatSnackBarModule],
       declarations: [ CartAddComponent ],
-      providers: [ProductService, {provide:HttpClient}]
+      providers: [ProductService, {provide:HttpClient}, SnackbarService]
     })
     .compileComponents();
   });

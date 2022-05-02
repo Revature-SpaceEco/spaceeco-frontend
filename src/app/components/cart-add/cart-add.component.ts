@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../../models/Product';
 import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 import { ProductService} from '../../services/product/product.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'cart-add',
@@ -15,6 +16,7 @@ export class CartAddComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private cartService: CartCheckoutService,
+    private snackBarService: SnackbarService
     ) {}
 
   ngOnInit(): void {
@@ -23,5 +25,6 @@ export class CartAddComponent implements OnInit {
 
   addItem(item: Product) {
     this.cartService.addItem(item);
+    this.snackBarService.success(`${item.name} successfully added to cart.`);
   }
 }
