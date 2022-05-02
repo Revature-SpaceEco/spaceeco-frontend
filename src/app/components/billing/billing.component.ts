@@ -50,22 +50,15 @@ export class BillingComponent implements OnInit {
   }
 
   proceedToShipping() {
+    console.log(this.billingForm.value);
+    console.log(this.billingAddressForm.value);
     if (this.billingForm.valid || this.billingAddressForm.valid){
-      this.finalBillingDetails.cardType = this.billingForm.value.cardType;
-      this.finalBillingDetails.cardNumber = this.billingForm.value.cardNumber;
-      this.finalBillingDetails.securityNumber = this.billingForm.value.securityNumber;
-      this.finalBillingDetails.name = this.billingForm.value.name;
-
-      this.finalAddress.addressLineOne = this.billingAddressForm.value.addressLineOne;
-      this.finalAddress.addressLineTwo = this.billingAddressForm.value.addressLineTwo;
-      this.finalAddress.city = this.billingAddressForm.value.city;
-      this.finalAddress.state = this.billingAddressForm.value.state;
-      this.finalAddress.country = this.billingAddressForm.value.country;
-      this.finalAddress.zip = this.billingAddressForm.value.zip;
-      this.finalAddress.solarSystem = this.billingAddressForm.value.solarSystem;
-      this.finalAddress.planet = this.billingAddressForm.value.planet;
-
-      //this.addressService.postAddress(this.finalAddress);
+      this.finalBillingDetails = {
+        ...this.billingForm.value
+      }
+      this.finalAddress = {
+        ...this.billingAddressForm.value
+      }
 
       this.finalBillingDetails.address = this.finalAddress;
 

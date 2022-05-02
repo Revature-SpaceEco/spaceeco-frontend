@@ -8,6 +8,7 @@ import { AddressServiceService } from '../../services/address/address-service.se
 import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 import { OrderService } from '../../services/order/order.service';
 import { SnackbarService } from '../../services/snackbar/snackbar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shipping',
@@ -17,7 +18,18 @@ import { SnackbarService } from '../../services/snackbar/snackbar.service';
 export class ShippingComponent implements OnInit {
   shippingAddressForm!: FormGroup;
   finalAddress: Address;
-  order: Order;
+
+  newAddress: Address = <Address>{};
+
+  newPayment: Payment = <Payment>{};
+  order: Order = {
+    id: 0,
+    orderProducts: [],
+    orderDate: 0,
+    orderStatus: 'pending',
+    shippingAddress: this.newAddress,
+    orderPayment: this.newPayment
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -25,6 +37,7 @@ export class ShippingComponent implements OnInit {
     private cartCheckoutService: CartCheckoutService,
     private snackBarService: SnackbarService,
     private billingService: BillingDetailsService,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -43,18 +56,9 @@ export class ShippingComponent implements OnInit {
   proceedToOrder() {
 
     if (this.shippingAddressForm.valid){
-
-      this.finalAddress.addressLineOne = this.shippingAddressForm.value.addressLineOne;
-      this.finalAddress.addressLineTwo = this.shippingAddressForm.value.addressLineTwo;
-      this.finalAddress.city = this.shippingAddressForm.value.city;
-      this.finalAddress.state = this.shippingAddressForm.value.state;
-      this.finalAddress.country = this.shippingAddressForm.value.country;
-      this.finalAddress.zip = this.shippingAddressForm.value.zip;
-      this.finalAddress.solarSystem = this.shippingAddressForm.value.solarSystem;
-      this.finalAddress.planet = this.shippingAddressForm.value.planet;
-
-      //this.addressService.postAddress(this.finalAddress);
-
+      this.finalAddress = {
+        ...this.shippingAddressForm.value
+      }
 
       this.billingService.getBillingDetails().subscribe(details => {
         this.order.orderPayment.paymentBillingDetails = details;
@@ -63,9 +67,11 @@ export class ShippingComponent implements OnInit {
       this.cartCheckoutService.getCart().subscribe(items =>{
         this.order.shippingAddress = this.finalAddress;
         this.order.orderProducts = items;
-        this.orderService.addOrder(this.order);
+        this.orderService.addOrder(this.order).subscribe();
         }
       );
+
+      this.router.navigate(['order']);
     }
     else {
       this.snackBarService.error("All fields are required.");

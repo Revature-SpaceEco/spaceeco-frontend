@@ -13,21 +13,21 @@
         <app-shipping *ngSwitchCase="currentStep === 3"></app-shipping>
     </ng-container>
 </div>
+<div class="price-total">
+    <h1>Total:</h1>
+    <h3>Subtotal: ${{(subTotal).toFixed(2)}}</h3>
+    <h3>Shipping: ${{(shippingCost).toFixed(2)}}</h3>
+    <hr>
+    <h2>${{(subTotal + shippingCost).toFixed(2)}}</h2>
+</div>
+<ng-template #noTotal>
     <div class="price-total">
         <h1>Total:</h1>
-        <h3>Subtotal: ${{(subTotal).toFixed(2)}}</h3>
-        <h3>Shipping: ${{(shippingCost).toFixed(2)}}</h3>
+        <h3>Subtotal: $0.00</h3>
+        <h3>Shipping: + $0.00</h3>
         <hr>
-        <h2>${{(subTotal + shippingCost).toFixed(2)}}</h2>
+        <h2>
+            $0.00
+        </h2>
     </div>
-    <ng-template #noTotal>
-      <div class="price-total">
-        <h1>Total:</h1>
-            <h3>Subtotal:   $0.00</h3>
-            <h3>Shipping: + $0.00</h3>
-            <hr>
-            <h2>
-                $0.00
-            </h2>
-      </div>      
-    </ng-template>
+</ng-template>

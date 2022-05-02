@@ -30,19 +30,8 @@ export class CartCheckoutComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.currentStep = 1;  
+    this.currentStep = 1;
   }
-
-  // completeCheckout(order: Order) {
-  //   this.cartCheckoutService.completeCheckout(order);
-  // }
-  
-  // convert to ngrx selector
-  // calculateSubTotal() {
-  //   let sum = 0;
-  //   this.cart.forEach(item => sum += item.cost);
-  //   // this.subTotal = `$${sum.toFixed(2)}`;
-  // }
 
   goToNextStep(step: number) {
     this.currentStep = step;
@@ -50,6 +39,4 @@ export class CartCheckoutComponent implements OnInit {
       this.shippingCost = 1;
     }
   }
-
-
 }
