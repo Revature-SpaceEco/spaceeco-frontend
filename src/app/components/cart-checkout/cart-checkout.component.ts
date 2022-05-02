@@ -14,7 +14,7 @@ export class CartCheckoutComponent implements OnInit {
   cart:Product[]=[];
   itemsObservable: Observable<Product[]>
   shippingCost: number = 1.00;
-  subTotal: number;
+  subTotal: number = 0.00;
 
 
   constructor(

@@ -8,7 +8,7 @@ import { CartCheckoutService } from 'src/app/services/cart/cart-checkout.service
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  @Input() cart: Product[];
+  @Input() cart: Product[] = [];
   @Output() nextStep = new EventEmitter<number>();
 
   constructor(private cartCheckoutService: CartCheckoutService) { }
