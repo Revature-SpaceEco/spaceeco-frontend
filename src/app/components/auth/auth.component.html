@@ -27,12 +27,23 @@
           required
         >
       </mat-form-field>
+      <mat-form-field>
+        <input 
+          matInput type="number" 
+          name="totp" 
+          id="totp" 
+          minlength="8"
+          placeholder="One Time Password"
+          ngModel
+          required 
+        >
+      </mat-form-field>
       <div #errorMsg id="error-msg">Invalid username/password</div>
       <div>
         <button 
           mat-raised-button 
           type="submit" 
-          [disabled]="!authForm.valid"
+          [disabled]="!authForm.valid "
         >Login</button>
       </div>
     </form>

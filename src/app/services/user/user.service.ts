@@ -9,9 +9,10 @@ const url = environment.BACKEND_URL;
   providedIn: 'root',
 })
 export class UserService {
+  userId= localStorage.getItem('userId');
   constructor(private httpClient: HttpClient) {}
 
-  getUserById(userId: number): Observable<any> {
-    return this.httpClient.get<any>(url + '/users/' + userId);
+  getUserById(): Observable<any> {
+    return this.httpClient.get<any>(url + '/users/' + this.userId);
   }
 }
