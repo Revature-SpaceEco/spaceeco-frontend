@@ -13,7 +13,7 @@ export class CartCheckoutComponent implements OnInit {
   currentStep: number;
   cart:Product[]=[];
   itemsObservable: Observable<Product[]>
-  shippingCost: number = 1.00;
+  shippingCost: number = 0;
   subTotal: number = 0.00;
 
 
@@ -46,6 +46,9 @@ export class CartCheckoutComponent implements OnInit {
 
   goToNextStep(step: number) {
     this.currentStep = step;
+    if(step > 1) {
+      this.shippingCost = 1;
+    }
   }
 
 

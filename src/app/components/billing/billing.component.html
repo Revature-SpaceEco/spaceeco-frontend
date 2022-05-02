@@ -5,19 +5,19 @@
             <h4>Payment Information</h4>
             <div>
                 <div class="form-section">
-                    <label for="billingName"><mat-icon>person</mat-icon> Name</label>
-                    <input type="text" id="billingName" name="fullName" placeholder="Full Name on card">
+                    <label for="name"><mat-icon>person</mat-icon> Name</label>
+                    <input type="text" id="name" name="fullName" placeholder="Full Name on card">
     
-                    <label for="billingCardType"><mat-icon>credit_card</mat-icon> Card Type</label>
-                    <input type="text" id="billingCardType" name="fullName" placeholder="Card Type">    
+                    <label for="cardType"><mat-icon>credit_card</mat-icon> Card Type</label>
+                    <input type="text" id="cardType" name="cardType" placeholder="Card Type">    
                 </div>
-               <div class="form-section">
-                <label for="billingCardNumber"><mat-icon>credit_card</mat-icon> Card Number</label>
-                <input type="text" id="billingCardNumber" name="billingCardNumber" placeholder="Credit Card Number">
+            <div class="form-section">
+                <label for="cardNumber"><mat-icon>credit_card</mat-icon> Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="Credit Card Number">
 
-                <label for="billingSecurityNumber">CVV</label>
-                <input type="password" id="billingSecurityNumber" name="billingSecurityNumber" placeholder="Card CVV Number">
-               </div>  
+                <label for="securityNumber">CVV</label>
+                <input type="password" id="securityNumber" name="securityNumber" placeholder="Card CVV Number">
+            </div>  
             </div>
         </form>
         <form id="billingAddressForm" [formGroup]="billingAddressForm">
@@ -49,7 +49,7 @@
                 </div>
     
                 <div class="form-section">
-     
+    
                     <label for="planet">Planet</label>
                     <input type="text" id="planet" name="planet" placeholder="Enter Planet/Galactic Coordinates">
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Payment } from 'src/app/models/Payment';
+import { BillingDetailsService } from 'src/app/services/billing-details/billing-details.service';
 import { Address } from '../../models/Address';
 import { Order } from '../../models/Order';
 import { AddressServiceService } from '../../services/address/address-service.service';
@@ -17,13 +19,12 @@ export class ShippingComponent implements OnInit {
   finalAddress: Address;
   order: Order;
 
-
   constructor(
     private fb: FormBuilder,
-    private addressService: AddressServiceService,
     private orderService: OrderService,
     private cartCheckoutService: CartCheckoutService,
     private snackBarService: SnackbarService,
+    private billingService: BillingDetailsService,
     ) { }
 
   ngOnInit(): void {
@@ -52,18 +53,22 @@ export class ShippingComponent implements OnInit {
       this.finalAddress.solarSystem = this.shippingAddressForm.value.solarSystem;
       this.finalAddress.planet = this.shippingAddressForm.value.planet;
 
-      this.addressService.postAddress(this.finalAddress);
+      //this.addressService.postAddress(this.finalAddress);
+
+
+      this.billingService.getBillingDetails().subscribe(details => {
+        this.order.orderPayment.paymentBillingDetails = details;
+      });
 
       this.cartCheckoutService.getCart().subscribe(items =>{
         this.order.shippingAddress = this.finalAddress;
-        this.order.orderProducts = items
+        this.order.orderProducts = items;
         this.orderService.addOrder(this.order);
-        this.snackBarService.success("Shipping information saved");
-        //add payment info from billing service
         }
       );
-    } else {
-      this.snackBarService.error("check the values");
-      }
     }
+    else {
+      this.snackBarService.error("All fields are required.");
+    }
+  }
 }
