@@ -1,14 +1,14 @@
 <div class="main-style" fxLayoutAlign="center" fxLayout="row">
-  <mat-card class="column-left" fxLayout="column" fxLayoutAlign="start">
+  <mat-card *ngIf="user" class="column-left" fxLayout="column" fxLayoutAlign="start">
     <div class="image-border" fxLayoutAlign="center">
       <img id="profile-image" src="../../../assets/Images/user-icon.png" alt="profile image" />
     </div>
     <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
-      <h2>John Doe</h2>
-      <p>john.doe@gmail.com</p>
+      <h2>{{user.firstName}} {{user.lastName}}</h2>
+      <p>{{user.email}}</p>
     </mat-card>
-    <mat-card class="card-color" fxLayoutAlign="center">
-      <p>Verfied Seller</p> <!-- (use userrole) -->
+    <mat-card *ngIf="userRole" class="card-color" fxLayoutAlign="center">
+      <p>Verfied {{userRole}}</p> <!-- (use userrole) -->
     </mat-card>
   </mat-card>
 
@@ -27,32 +27,32 @@
 
     </mat-card>
     <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
-      <!--*ngIf="address">-->
+      
       <mat-card-header>
         <h2>Address Info</h2>
       </mat-card-header>
       <div *ngIf="address; else addressNo">
         <mat-card-content #addressYes>
           <p>Address Line One:
-            <!--{{address.addressLineOne}}-->
+            {{address.addressLineOne}}
           </p>
           <p>Address Line Two:
-            <!--{{ address.addressLineTwo }} -->
+            {{ address.addressLineTwo }}
           </p>
           <p>City:
-            <!--{{ address.city }} -->
+            {{ address.city }}
           </p>
           <p>State:
-            <!--{{ address.state }} -->
+            {{ address.state }}
           </p>
           <p>Zip code:
-            <!--{{ address.zip }} -->
+            {{ address.zip }}
           </p>
           <p>Solar:
-            <!--{{{ address.solarSystem }}  -->
+            {{ address.solarSystem }} 
           </p>
           <p class="planet"> Planet:
-            <!--{{ address.planet }} -->
+            {{ address.planet }}
           </p>
 
         </mat-card-content>
