@@ -17,13 +17,13 @@ export class BillingComponent implements OnInit {
 
   finalAddress: Address;
   finalBillingDetails: BillingDetails;
-  
+
   @Output() nextStep = new EventEmitter<number>();
 
   billingDetails: BillingDetails;
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private billingService: BillingDetailsService,
     private addressService: AddressServiceService,
     private snackBarService: SnackbarService,
@@ -31,12 +31,12 @@ export class BillingComponent implements OnInit {
 
   ngOnInit(): void {
     this.billingForm = this.fb.group({
-      billingName: new FormControl('', Validators.required),
-      billingCardType: new FormControl('', Validators.required),
-      billingCardNumber: new FormControl('', Validators.required),
-      billingSecurityNumber: new FormControl('', Validators.required)
+      name: new FormControl('', Validators.required),
+      cardType: new FormControl('', Validators.required),
+      cardNumber: new FormControl('', Validators.required),
+      securityNumber: new FormControl('', Validators.required)
   });
-  
+
     this.billingAddressForm = this.fb.group({
       addressLineOne: new FormControl('', Validators.required),
       addressLineTwo: new FormControl(''),
@@ -50,24 +50,17 @@ export class BillingComponent implements OnInit {
   }
 
   proceedToShipping() {
+    console.log(this.billingForm.value);
+    console.log(this.billingAddressForm.value);
     if (this.billingForm.valid || this.billingAddressForm.valid){
-      this.finalBillingDetails.billingCardType = this.billingForm.value.billingCardType;
-      this.finalBillingDetails.billingCardNumber = this.billingForm.value.billingCardNumber;
-      this.finalBillingDetails.billingSecurityNumber = this.billingForm.value.billingSecurityNumber;
-      this.finalBillingDetails.billingName = this.billingForm.value.billingName;
+      this.finalBillingDetails = {
+        ...this.billingForm.value
+      }
+      this.finalAddress = {
+        ...this.billingAddressForm.value
+      }
 
-      this.finalAddress.addressLineOne = this.billingAddressForm.value.addressLineOne;
-      this.finalAddress.addressLineTwo = this.billingAddressForm.value.addressLineTwo;
-      this.finalAddress.city = this.billingAddressForm.value.city;
-      this.finalAddress.state = this.billingAddressForm.value.state;
-      this.finalAddress.country = this.billingAddressForm.value.country;
-      this.finalAddress.zip = this.billingAddressForm.value.zip;
-      this.finalAddress.solarSystem = this.billingAddressForm.value.solarSystem;
-      this.finalAddress.planet = this.billingAddressForm.value.planet;
-
-      this.addressService.postAddress(this.finalAddress);
-
-      this.finalBillingDetails.billingAddress = this.finalAddress;
+      this.finalBillingDetails.address = this.finalAddress;
 
       this.billingService.addBillingDetails(this.finalBillingDetails);
 

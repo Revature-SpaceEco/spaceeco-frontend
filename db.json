@@ -34,60 +34,60 @@
         }
     ],
     "products": [{
-            "productId": 1,
-            "productName": "1986 Plymouth Junkerolla",
-            "productDescription": "It can play the la cokaracha",
-            "productCost": 49999.99,
+            "id": 1,
+            "name": "1986 Plymouth Junkerolla",
+            "description": "It can play the la cokaracha",
+            "cost": 49999.99,
             "categories": [{
                 "categoryId": 1,
                 "categoryName": "automobile"
             }],
-            "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
-            "productSellerId": []
+            "image": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+            "sellerId": []
         },
         {
-            "productId": 2,
-            "productName": "1986 Plymouth Junkerolla",
-            "productDescription": "It can play the la cokaracha",
-            "productCost": 49999.99,
-            "categories": [{
-                "categoryId": 1,
-                "categoryName": "automobile"
+            "id": 2,
+            "name": "1986 Plymouth Junkerolla",
+            "description": "It can play the la cokaracha",
+            "cost": 49999.99,
+            "category": [{
+                "id": 1,
+                "name": "automobile"
             }],
-            "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
-            "productSellerId": []
+            "image": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+            "sellerId": []
         },
         {
             "productId": 3,
             "productName": "1986 Plymouth Junkerolla",
             "productDescription": "It can play the la cokaracha",
             "productCost": 49999.99,
-            "categories": [{
-                "categoryId": 1,
-                "categoryName": "automobile"
+            "category": [{
+                "id": 1,
+                "name": "automobile"
             }],
-            "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
-            "productSellerId": []
+            "image": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+            "sellerId": []
         },
         {
-            "productId": 4,
-            "productName": "1986 Plymouth Junkerolla",
-            "productDescription": "It can play the la cokaracha",
-            "productCost": 49999.99,
-            "categories": [{
-                "categoryId": 1,
-                "categoryName": "automobile"
+            "id": 4,
+            "name": "1986 Plymouth Junkerolla",
+            "description": "It can play the la cokaracha",
+            "cost": 49999.99,
+            "category": [{
+                "id": 1,
+                "name": "automobile"
             }],
-            "productImage": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
-            "productSellerId": []
+            "image": "https://static.wikia.nocookie.net/simpsons/images/b/b4/Tapped_Out_The_Homer.png/revision/latest/scale-to-width-down/413?cb=20150727020253",
+            "sellerId": []
         }
     ],
     "billingDetails": [{
             "id": 1,
-            "billingCardType": "Visa",
-            "billingSecurityNumber": 123,
-            "billingName": "Peter B Parker",
-            "billingAddress": {
+            "cardType": "Visa",
+            "securityNumber": 123,
+            "name": "Peter B Parker",
+            "address": {
                 "id": 1,
                 "addressLineOne": "92 Spider Rd.",
                 "addressLineTwo": null,
@@ -101,10 +101,10 @@
         },
         {
             "id": 2,
-            "billingCardType": "Mastercard",
-            "billingSecurityNumber": 111,
-            "billingName": "Mary J Watson",
-            "billingAddress": {
+            "cardType": "Mastercard",
+            "securityNumber": 111,
+            "name": "Mary J Watson",
+            "address": {
                 "id": 2,
                 "addressLineOne": "91 Spider Rd.",
                 "addressLineTwo": null,
@@ -162,10 +162,10 @@
             "paymentStatus": "pending",
             "paymentBillingDetails": {
                 "id": 1,
-                "billingCardType": "Visa",
-                "billingSecurityNumber": 123,
-                "billingName": "Peter B Parker",
-                "billingAddress": {
+                "cardType": "Visa",
+                "securityNumber": 123,
+                "name": "Peter B Parker",
+                "address": {
                     "id": 1,
                     "addressLineOne": "92 Spider Rd.",
                     "addressLineTwo": null,
@@ -184,10 +184,10 @@
         "paymentStatus": "pending",
         "paymentBillingDetails": {
             "id": 1,
-            "billingCardType": "Visa",
-            "billingSecurityNumber": 123,
-            "billingName": "Peter B Parker",
-            "billingAddress": {
+            "cardType": "Visa",
+            "securityNumber": 123,
+            "name": "Peter B Parker",
+            "address": {
                 "id": 1,
                 "addressLineOne": "92 Spider Rd.",
                 "addressLineTwo": null,
