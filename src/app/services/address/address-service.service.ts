@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Address } from '../../models/Address';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/models/User';
 
 const URL = environment.BACKEND_URL;
 
@@ -34,7 +35,7 @@ export class AddressServiceService {
   }
 
   getAddress(): Observable<Address> {
-    console.log("get address call", this.jwt);
+    
     return this.http.get<Address>(URL + '/users/' + this.userId + '/address', this.httpOptions2);
   }
 
@@ -43,6 +44,10 @@ export class AddressServiceService {
   //   this.http.get<any>(URL + '/users/' + this.userId + '/orders/1', this.httpOptions)
   //   .subscribe(data => console.log("calling get order", data))
   // }
+
+  getUser(): Observable<any>{
+    return this.http.get<any>(URL + '/users/' + this.userId);
+  }
 
   putAddress(address: Address) {
     return this.http.put<Address>(URL + '/users/' + this.userId +'/address', address);
