@@ -22,10 +22,12 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    console.log(form);
     const username = form.value.username;
     const password = form.value.password;
+    const totp = form.value.totp;
     this.authService
-      .login(username, password)
+      .login(username, password, totp)
       .subscribe({
         next: (v) => {
           localStorage.setItem('jwt', v.body.jwt);

@@ -1,3 +1,10 @@
+.col {
+	display: inline-block;
+	padding-right: 5%;
+	padding-top: 5%;
+}
+
+/* Next Step Button*/
 .next {
 	box-shadow: 0px 0px 0px 0px #ffa600;
 	background-color:#ffa600;
@@ -20,13 +27,28 @@
 	position:relative;
 	top:1px;
 }
+/* Product Display */
+.product-image {
+	max-width: 200px;
+	height: 150px;
+}
 
-.clear-cart .clear-cart:active {
+.product-info {
+	padding-bottom: 2%;
+	text-align: center;
+}
+
+/* Clear Cart Icon*/
+.clear-cart, .clear-cart:active {
 	text-decoration: none;
 	color:black
 }
 
-.clear-cart:focus {
+.clear-cart:focus, .clear-cart:hover {
 	text-decoration: none;
+}
+
+.remove-cart:hover, .clear-cart:hover{
+	cursor: pointer;
 	color: #B22727;
 }

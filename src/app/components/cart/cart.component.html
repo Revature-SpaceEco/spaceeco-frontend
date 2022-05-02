@@ -1,20 +1,24 @@
-<div *ngFor="let product of cart">
-    <mat-grid-list cols="3">
-        <mat-grid-tile [rowspan]="2">
-            <img [src]="product.image" alt="product-image">
-        </mat-grid-tile>
-        <mat-grid-tile [rowspan]="1">
-            <p>{{product.name}}</p>
-        </mat-grid-tile>
-        <mat-grid-tile [rowspan]="1">
-            <p>{{product.cost}}</p>
-        </mat-grid-tile>
-        <mat-grid-tile [rowspan]="2">
-            <a href="#">
+<ng-container *ngIf="currentCart.length; else emptyCart">
+    <div *ngFor="let product of currentCart">
+        <div class="col">
+            <img [src]="product.image" alt="product-image" class="product-image">
+        </div>
+        <div class="col product-info">
+            <h2>{{product.name}}</h2>
+            <h3>${{(product.cost).toFixed(2)}}</h3>
+        </div>
+        <div class="col">
+            <a class="remove-cart" (click)="removeFromCart(product)">
                 <mat-icon>delete</mat-icon>
             </a>
-        </mat-grid-tile>
-    </mat-grid-list>
-</div>
-<a class="clear-cart" href="#" (click)="clearCart()">Clear Cart<mat-icon>remove_shopping_cart</mat-icon></a>
-<a class="next" (click)="proceedToBilling()">Proceed to Payment<mat-icon>payments</mat-icon></a>
+        </div>
+    </div>
+    <a class="clear-cart" (click)="clearCart()">Clear Cart<mat-icon>remove_shopping_cart</mat-icon></a>
+    <a class="next" (click)="proceedToBilling()">Proceed to Payment<mat-icon>payments</mat-icon></a>
+</ng-container>
+<ng-template #emptyCart>
+    <div>
+        <h2>Your cart is currently empty.</h2>
+        <a class="next" href="#" routerLink="">Browse Catalog</a>
+    </div>
+</ng-template>

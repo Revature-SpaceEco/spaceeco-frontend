@@ -10,6 +10,9 @@ export const cartReducer = createReducer(
   }),
   on(fromActions.clearCart, (state) => {
     return adapter.removeAll(state);
+  }),
+  on(fromActions.removeFromCart, (state, item) => {
+    return adapter.removeOne(item.item.id, state);
   })
 );
 

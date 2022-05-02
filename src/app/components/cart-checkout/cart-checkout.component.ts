@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Product } from 'src/app/models/Product';
-import { Order } from '../../models/Order';
+import { Product } from '../../models/Product';
 import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class CartCheckoutComponent implements OnInit {
   cart:Product[]=[];
   itemsObservable: Observable<Product[]>
   shippingCost: number = 1.00;
-  subTotal: number;
+  subTotal: number = 0.00;
 
 
   constructor(
@@ -31,7 +30,7 @@ export class CartCheckoutComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.currentStep = 1;
+    this.currentStep = 1;  
   }
 
   // completeCheckout(order: Order) {
