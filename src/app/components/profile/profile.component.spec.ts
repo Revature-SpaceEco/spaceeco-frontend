@@ -30,7 +30,7 @@ describe('ProfileComponent', () => {
 
     getAddressSpy = mockAddressSerivce.getAddress.and.returnValue(of(address))
     await TestBed.configureTestingModule({
-      imports: [MatCardModule, MatFormFieldModule],
+      imports: [MatCardModule, MatFormFieldModule, HttpClientTestingModule],
       declarations: [ ProfileComponent ],
       providers: [{provide: AddressServiceService, useValue: mockAddressSerivce}]
     })
