@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
+import { UserService } from '../../services/user/user.service';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private route: Router,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +60,17 @@ export class RegisterComponent implements OnInit {
       },
       error: (e) => {
         console.log(e);
+      },
+    });
+  }
+
+  getUserById(userId: number) {
+    this.userService.getUserById(userId).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err.error);
       },
     });
   }

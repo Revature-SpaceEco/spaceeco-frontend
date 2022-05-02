@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Address } from 'src/app/models/Address';
-import { Order } from 'src/app/models/Order';
-import { AddressServiceService } from 'src/app/services/address/address-service.service';
-import { CartCheckoutService } from 'src/app/services/cart/cart-checkout.service';
-import { OrderService } from 'src/app/services/order/order.service';
-import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
+import { Address } from '../../models/Address';
+import { Order } from '../../models/Order';
+import { AddressServiceService } from '../../services/address/address-service.service';
+import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
+import { OrderService } from '../../services/order/order.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-shipping',
@@ -62,7 +62,6 @@ export class ShippingComponent implements OnInit {
         //add payment info from billing service
         }
       );
-
     } else {
       this.snackBarService.error("check the values");
       }

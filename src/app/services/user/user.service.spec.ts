@@ -1,16 +1,16 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { OrderService } from './order.service';
+import { UserService } from './user.service';
 
-describe('OrderService', () => {
-  let service: OrderService;
+describe('UserService', () => {
+  let service: UserService;
 
   beforeEach(async() => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule],
+      imports: [ HttpClientTestingModule]
     });
-    service = TestBed.inject(OrderService);
+    service = TestBed.inject(UserService);
   });
 
   it('should be created', () => {

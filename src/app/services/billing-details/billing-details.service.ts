@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BillingDetails } from 'src/app/models/BillingDetails';
-import { environment } from 'src/environments/environment';
+import { BillingDetails } from '../../models/BillingDetails';
+import { environment } from '../../../environments/environment';
 
 const URL = environment.BACKEND_URL;
 

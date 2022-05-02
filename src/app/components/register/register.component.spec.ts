@@ -1,7 +1,11 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
 import { RegisterComponent } from './register.component';
 
@@ -15,8 +19,11 @@ describe('RegisterComponent', () => {
         RouterTestingModule,
         ReactiveFormsModule,
         HttpClientTestingModule,
+        MatSnackBarModule,
+        MatCardModule, MatFormFieldModule, FormsModule
       ],
       declarations: [RegisterComponent],
+      providers: [SnackbarService],
     }).compileComponents();
   });
 

@@ -4,6 +4,8 @@ import {HttpClientTestingModule } from "@angular/common/http/testing";
 import { ProfileComponent } from './profile.component';
 import { of } from 'rxjs';
 import { Address } from 'src/app/models/Address';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -12,7 +14,6 @@ describe('ProfileComponent', () => {
   let planetEl: any;
   let address: Address;
   beforeEach(async () => {
-
     address= {
       id: 1,
       addressLineOne: "9194 North College Ave",
@@ -29,6 +30,7 @@ describe('ProfileComponent', () => {
 
     getAddressSpy = mockAddressSerivce.getAddress.and.returnValue(of(address))
     await TestBed.configureTestingModule({
+      imports: [MatCardModule, MatFormFieldModule],
       declarations: [ ProfileComponent ],
       providers: [{provide: AddressServiceService, useValue: mockAddressSerivce}]
     })
