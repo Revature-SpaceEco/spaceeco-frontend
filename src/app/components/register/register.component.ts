@@ -57,6 +57,16 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+ getUserById() {
+    this.userService.getUserById().subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err.error);
+      },
+    });
+  }
 
 }
 
