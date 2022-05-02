@@ -6,6 +6,8 @@ import { AuthService } from '../../services/auth/auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthComponent } from './auth.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -14,7 +16,7 @@ describe('AuthComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule ],
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule, MatCardModule, MatFormFieldModule, FormsModule ],
       declarations: [ AuthComponent ],
       providers:[AuthService,{provide: HttpClient}]
     })
