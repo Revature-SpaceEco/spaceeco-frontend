@@ -4,6 +4,7 @@ import { AddressServiceService } from '../../services/address/address-service.se
 import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { UserRole } from 'src/app/models/UserRole';
+import { UserService } from 'src/app/services/user/user.service';
 
 
 @Component({
@@ -12,11 +13,14 @@ import { UserRole } from 'src/app/models/UserRole';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  userId= localStorage.getItem('userId');
+  jwt = localStorage.getItem("jwt");
   user!: User;
   userRole: String;
   address!: Address;
   constructor(
-    private addressService: AddressServiceService
+    private addressService: AddressServiceService,
+    private userService: UserService
   ) { }
 
   getAddress() {
@@ -35,7 +39,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser(){
-    this.addressService.getUser().subscribe({
+    this.userService.getUserById().subscribe({
       next: (data) => {
         this.user = data;
         this.userRole = this.formatRole(this.user.userRole.role);

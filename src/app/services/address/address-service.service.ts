@@ -45,9 +45,6 @@ export class AddressServiceService {
   //   .subscribe(data => console.log("calling get order", data))
   // }
 
-  getUser(): Observable<any>{
-    return this.http.get<any>(URL + '/users/' + this.userId);
-  }
 
   putAddress(address: Address) {
     return this.http.put<Address>(URL + '/users/' + this.userId +'/address', address);
