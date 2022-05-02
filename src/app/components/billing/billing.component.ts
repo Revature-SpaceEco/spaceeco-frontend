@@ -50,8 +50,6 @@ export class BillingComponent implements OnInit {
   }
 
   proceedToShipping() {
-    this.nextStep.emit(3);
-
     if (this.billingForm.valid || this.billingAddressForm.valid){
       this.finalBillingDetails.billingCardType = this.billingForm.value.billingCardType;
       this.finalBillingDetails.billingCardNumber = this.billingForm.value.billingCardNumber;
@@ -75,6 +73,7 @@ export class BillingComponent implements OnInit {
 
       this.snackBarService.success("billing information saved");
 
+      this.nextStep.emit(3);
     } else {
         this.snackBarService.error("check the values");
     }
