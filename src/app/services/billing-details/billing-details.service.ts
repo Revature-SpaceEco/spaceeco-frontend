@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BillingDetails } from 'src/app/models/BillingDetails';
-import { environment } from 'src/environments/environment';
+import { BillingDetails } from '../../models/BillingDetails';
+import { environment } from '../../../environments/environment';
 
 const URL = environment.BACKEND_URL;
 
@@ -10,7 +10,7 @@ const URL = environment.BACKEND_URL;
 })
 export class BillingDetailsService {
   jwt = localStorage.getItem("jwt");
-  userId = 1; //placeholder, need to save uId in localStorage, then get
+  userId = 1; //placeholder, need to use state
   httpOptions = {
     headers: new HttpHeaders({
       'Authorization': 'Bearer ' + this.jwt
@@ -19,8 +19,13 @@ export class BillingDetailsService {
 
   constructor(private http: HttpClient) { }
 
+  // post and get
+
   addBillingDetails(billing: BillingDetails) {
     return this.http.post<BillingDetails>(URL + "users/" + this.userId + "/billing", billing);
   }
 
+  getBillingDetails(billingId: string) {
+    return this.http.get<BillingDetails>(URL + "users/" + this.userId + "/billing" + billingId);
+  }
 }
