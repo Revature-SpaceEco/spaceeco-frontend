@@ -55,7 +55,9 @@ export class RegisterComponent implements OnInit {
   login(username: string, password: string) {
     this.authService.login(username, password).subscribe({
       next: (res) => {
+        localStorage.setItem('userId', res.body.userId);
         localStorage.setItem('jwt', res.body.jwt);
+        
         this.route.navigate(['/profile']);
       },
       error: (e) => {

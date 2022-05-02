@@ -3,8 +3,8 @@ import { Address } from '../../models/Address';
 import { AddressServiceService } from '../../services/address/address-service.service';
 import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/User';
-import { UserRole } from 'src/app/models/UserRole';
 import { UserService } from 'src/app/services/user/user.service';
+import { BillingDetails } from 'src/app/models/BillingDetails';
 
 
 @Component({
@@ -18,6 +18,8 @@ export class ProfileComponent implements OnInit {
   user!: User;
   userRole: String;
   address!: Address;
+  primaryBilling!: BillingDetails;
+  
   constructor(
     private addressService: AddressServiceService,
     private userService: UserService
@@ -29,8 +31,6 @@ export class ProfileComponent implements OnInit {
       next: (data) => {
         //this will be where the response body fill out our HTML objects
         this.address = data;
-        
-
       },
       error: (err: any) => {
         console.log("Did not get address from backend" + err);
@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
       next: (data) => {
         this.user = data;
         this.userRole = this.formatRole(this.user.userRole.role);
-        //console.log("Got proper response " + this.userRole.role);
+        this.primaryBilling = data.primaryBilling;
       },
       error: (err: any) => {
         console.log("Did not get address from backend" + err);
@@ -74,7 +74,14 @@ export class ProfileComponent implements OnInit {
     const solarSystem = form.value.solarSystem;
     const planet = form.value.planet;
     console.log("address form addressLineOne" + addressLineOne)
- 
+    let residence = {addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, 
+      city: city, state:state, country:country, zip: zip,
+      solarSystem: solarSystem, planet:planet};
+    this.addressService.postAddress(residence).subscribe({
+      next: (data) => {
+        this.address = data;
+      }
+    }); 
   }
 
   ngOnInit(): void {

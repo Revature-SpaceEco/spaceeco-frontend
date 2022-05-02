@@ -30,7 +30,8 @@ export class AddressServiceService {
 
   constructor(private http: HttpClient) { }
 
-  postAddress(address: Address) {
+  postAddress(address: any): Observable<Address> {
+    console.log("address " + address.addressLineOne);
     return this.http.post<Address>(URL + "/users/" + this.userId +'/address', address); 
   }
 
@@ -38,12 +39,6 @@ export class AddressServiceService {
     
     return this.http.get<Address>(URL + '/users/' + this.userId + '/address', this.httpOptions2);
   }
-
-  // getOrder(){
-  //   console.log("GET orders!");
-  //   this.http.get<any>(URL + '/users/' + this.userId + '/orders/1', this.httpOptions)
-  //   .subscribe(data => console.log("calling get order", data))
-  // }
 
 
   putAddress(address: Address) {

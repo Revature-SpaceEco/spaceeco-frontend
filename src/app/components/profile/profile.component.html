@@ -1,9 +1,9 @@
 <div class="main-style" fxLayoutAlign="center" fxLayout="row">
-  <mat-card *ngIf="user" class="column-left" fxLayout="column" fxLayoutAlign="start">
+  <mat-card class="column-left" fxLayout="column" fxLayoutAlign="start">
     <div class="image-border" fxLayoutAlign="center">
       <img id="profile-image" src="../../../assets/Images/user-icon.png" alt="profile image" />
     </div>
-    <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
+    <mat-card *ngIf="user" class="card-color" fxLayoutAlign="center" fxLayout="column">
       <h2>{{user.firstName}} {{user.lastName}}</h2>
       <p>{{user.email}}</p>
     </mat-card>
@@ -12,17 +12,25 @@
     </mat-card>
   </mat-card>
 
-  <mat-card class="column-right">
+  <mat-card  class="column-right">
     <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
       <mat-card-header>
         <h2>Payment Info</h2>
       </mat-card-header>
-      <mat-card-content class="detail-content">
-        <p>Billing Card Type: </p>
-        <p>Biling Card Number: </p>
-        <p>Biling Security Number: </p>
-        <p>Biling Name: </p>
-        <p>Biling Address:</p>
+      <mat-card-content *ngIf="primaryBilling" class="detail-content">
+        <p>Billing Card Type: {{primaryBilling.billingCardType}}</p>
+        <p>Biling Card Number: {{primaryBilling.billingCardNumber}}</p>
+        <p>Biling Security Number: {{primaryBilling.billingSecurityNumber}}</p>
+        <p>Biling Name: {{primaryBilling.billingName}}</p>
+        <p>Biling Address: {{primaryBilling.billingAddress.addressLineOne}}, 
+          {{primaryBilling.billingAddress.addressLineTwo}}, 
+          {{primaryBilling.billingAddress.city}}, 
+          {{primaryBilling.billingAddress.state}}, 
+          {{primaryBilling.billingAddress.zip}}, 
+          {{primaryBilling.billingAddress.country}}, 
+          {{primaryBilling.billingAddress.solarSystem}}, 
+          {{primaryBilling.billingAddress.planet}}
+        </p>
       </mat-card-content>
 
     </mat-card>
