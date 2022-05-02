@@ -1,11 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AppState } from 'src/app/app.state';
+import { AppState } from '../../app.state';
 import { Product } from '../../models/Product';
-import { User } from '../../models/User';
-import { UserRole } from '../../models/UserRole';
 import { ProductSelectors, ProductActions } from './state';
 
 @Injectable({
@@ -36,6 +33,10 @@ export class ProductService {
 
   selectAllProducts(){
     return this.store.select(ProductSelectors.selectAllProducts);
+  }
+
+  getCurrentProduct() {
+    return this.store.select(ProductSelectors.selectItem);
   }
 
 }

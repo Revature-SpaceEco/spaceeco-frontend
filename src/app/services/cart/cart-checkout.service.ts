@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AppState } from 'src/app/app.state';
-import { Cart } from '../../models/Cart';
-import { Order } from '../../models/Order';
+import { AppState } from '../../app.state';
 import { Product } from '../../models/Product';
 import { CartActions } from './state';
 import { CartSelectors }  from '../../services/cart/state';
