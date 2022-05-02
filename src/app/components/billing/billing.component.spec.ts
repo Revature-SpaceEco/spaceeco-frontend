@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
@@ -12,7 +13,7 @@ describe('BillingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, MatSnackBarModule],
+      imports: [ HttpClientTestingModule, MatSnackBarModule, MatIconModule, FormsModule ],
       declarations: [ BillingComponent ],
       providers: [FormBuilder, SnackbarService ]
     })

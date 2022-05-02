@@ -4,6 +4,8 @@ import { DisplayProductsComponent } from './display-products.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ProductService } from '../../services/product/product.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 describe('DisplayProductsComponent', () => {
@@ -14,7 +16,7 @@ describe('DisplayProductsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, RouterTestingModule ],
+      imports: [ HttpClientTestingModule, RouterTestingModule, MatCardModule, MatGridListModule ],
       declarations: [ DisplayProductsComponent ],
       providers: [ provideMockStore({})]
     })

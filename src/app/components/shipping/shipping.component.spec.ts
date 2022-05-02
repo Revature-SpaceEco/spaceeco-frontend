@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
@@ -14,7 +15,7 @@ describe('ShippingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, MatSnackBarModule],
+      imports: [ HttpClientTestingModule, MatSnackBarModule, MatIconModule, FormsModule ],
       declarations: [ ShippingComponent ],
       providers: [FormBuilder, provideMockStore({}), SnackbarService]
     })
