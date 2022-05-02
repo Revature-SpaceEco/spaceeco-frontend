@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { BillingDetails } from 'src/app/models/BillingDetails';
-import { BillingDetailsService } from 'src/app/services/billing-details/billing-details.service';
+import { BillingDetails } from '../../models//BillingDetails';
+import { BillingDetailsService } from '../../services/billing-details/billing-details.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Address } from 'src/app/models/Address';
+import { Address } from '../../models/Address';
 
 @Component({
   selector: 'app-billing',
