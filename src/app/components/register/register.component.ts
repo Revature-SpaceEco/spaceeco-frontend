@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
+import { UserService } from '../../services/user/user.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { switchMap } from 'rxjs/operators';
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private route: Router,
     private snackbar: SnackbarService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -55,11 +57,23 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+ getUserById() {
+    this.userService.getUserById().subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err.error);
+      },
+    });
+  }
+
 }
 
 @Component({
   selector: 'qr-dialog',
   templateUrl: 'qr-dialog.html',
+  styleUrls: ['./register.component.css'],
 })
 export class QrDialog {
     qrCode: string;
@@ -70,4 +84,5 @@ export class QrDialog {
       this.qrCode = this.data.qrCode;
       console.log(this.qrCode);
     }
+
 }
