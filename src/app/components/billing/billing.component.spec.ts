@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
@@ -16,9 +16,9 @@ describe('BillingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, MatSnackBarModule, MatIconModule, FormsModule ],
-      declarations: [ BillingComponent, provideMockStore({}) ],
-      providers: [FormBuilder, SnackbarService, BillingDetailsService ]
+      imports: [ HttpClientTestingModule, MatSnackBarModule, MatIconModule, FormsModule, ReactiveFormsModule ],
+      declarations: [ BillingComponent,  ],
+      providers: [FormBuilder, SnackbarService, BillingDetailsService, provideMockStore({}) ]
     })
     .compileComponents();
   });
