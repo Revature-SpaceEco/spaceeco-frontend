@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../../models/Product';
 import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
-import { ProductService} from '../../services/product/product.service';
+import { ProductService } from '../../services/product/product.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
@@ -11,13 +11,13 @@ import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
   styleUrls: ['./cart-add.component.css']
 })
 export class CartAddComponent implements OnInit {
-  item$: Observable<Product | undefined> ;
+  item$: Observable<Product | undefined>;
 
   constructor(
     private productService: ProductService,
     private cartService: CartCheckoutService,
     private snackBarService: SnackbarService
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.item$ = this.productService.getCurrentProduct();
