@@ -1,5 +1,5 @@
 <div class="grid-container" *ngIf="item$ | async as item">
-    <div class="item1"> <img class="product-image" src="{{item.image}}"> </div>
+    <div class="item1"> <img class="product-image" src="{{item.image}}" alt = "no image"> </div>
     <div class="item2">
         <p> {{item.name}}</p>
     </div>
@@ -10,6 +10,6 @@
         <p> {{item.description}}</p>
     </div>
     <div class="item5"><button class="add-to-cart-btn" (click)="addItem(item)">Add to Cart <img
-                src="https://cdn-icons-png.flaticon.com/512/263/263142.png" height="50"
+                src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt = "no picture" height="50"
                 style="background-color:orange" /> </button></div>
 </div>
