@@ -4,7 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
@@ -21,7 +23,7 @@ describe('RegisterComponent', () => {
         ReactiveFormsModule,
         HttpClientTestingModule,
         MatSnackBarModule,
-        MatCardModule, MatFormFieldModule, FormsModule, MatDialogModule
+        MatCardModule, MatFormFieldModule, FormsModule, MatDialogModule, MatInputModule,BrowserAnimationsModule
       ],
       declarations: [RegisterComponent],
       providers: [SnackbarService],

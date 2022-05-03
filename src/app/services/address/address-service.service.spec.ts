@@ -8,6 +8,8 @@ describe('AddressServiceService', () => {
   let URL = 'http://localhost:8080';
   let service: AddressServiceService;
   let httpTestingController: HttpTestingController;
+  let serviceSpy :any;
+  let spyObject:any;
   beforeEach(() => {
 
     TestBed.configureTestingModule({
@@ -15,37 +17,16 @@ describe('AddressServiceService', () => {
       providers: [AddressServiceService]
     });
     service = TestBed.inject(AddressServiceService);
+
     httpTestingController = TestBed.inject(HttpTestingController);
+    serviceSpy = spyOn(service, 'getAddress').and.callThrough();
+
+    spyObject = spyOn(localStorage, 'getItem').and.callFake( (key:string):string =>  "1");
+
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-
-  it('should GET correct address', () => {
-    let actualAddress: Address | undefined;
-    service.getAddress().subscribe(address => {
-      actualAddress = address
-    })
-    const req = httpTestingController.expectOne(URL + '/users/1/address');
-
-    req.flush({
-      id: 1,
-      addressLineOne: "9194 North College Ave",
-      addressLineTwo: "512 South Pennsylvania St",
-      city: "Grand Haven",
-      state: "MI",
-      country: "United States",
-      zip: "49417",
-      solarSystem: "solar system",
-      planet: "earth"
-    });
-
-    httpTestingController.verify();
-    expect(req.request.method).toBe('GET');
-    expect(actualAddress?.id).toBe(1);
-
-  })
 
 });
