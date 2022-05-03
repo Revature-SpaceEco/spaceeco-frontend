@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,13 +12,13 @@ const url = environment.BACKEND_URL;
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
-  login(username: string, password: string, mfaCode: number ): Observable<any> {
+  login(username: string, password: string, mfaCode: number): Observable<any> {
     return this.httpClient.post<any>(
       url + '/authenticate',
       {
         username: username,
         password: password,
-        mfaCode: mfaCode
+        mfaCode: mfaCode,
       },
       { observe: 'response' }
     );
