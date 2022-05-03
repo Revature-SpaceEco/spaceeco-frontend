@@ -18,18 +18,18 @@
         <h2>Payment Info</h2>
       </mat-card-header>
       <mat-card-content *ngIf="primaryBilling" class="detail-content">
-        <p>Billing Card Type: {{primaryBilling.billingCardType}}</p>
-        <p>Biling Card Number: {{primaryBilling.billingCardNumber}}</p>
-        <p>Biling Security Number: {{primaryBilling.billingSecurityNumber}}</p>
-        <p>Biling Name: {{primaryBilling.billingName}}</p>
-        <p>Biling Address: {{primaryBilling.billingAddress.addressLineOne}}, 
-          {{primaryBilling.billingAddress.addressLineTwo}}, 
-          {{primaryBilling.billingAddress.city}}, 
-          {{primaryBilling.billingAddress.state}}, 
-          {{primaryBilling.billingAddress.zip}}, 
-          {{primaryBilling.billingAddress.country}}, 
-          {{primaryBilling.billingAddress.solarSystem}}, 
-          {{primaryBilling.billingAddress.planet}}
+        <p>Billing Card Type: {{primaryBilling.cardType}}</p>
+        <p>Biling Card Number: {{primaryBilling.cardNumber}}</p>
+        <p>Biling Security Number: {{primaryBilling.securityNumber}}</p>
+        <p>Biling Name: {{primaryBilling.name}}</p>
+        <p>Biling Address: {{primaryBilling.address.addressLineOne}}, 
+          {{primaryBilling.address.addressLineTwo}}, 
+          {{primaryBilling.address.city}}, 
+          {{primaryBilling.address.state}}, 
+          {{primaryBilling.address.zip}}, 
+          {{primaryBilling.address.country}}, 
+          {{primaryBilling.address.solarSystem}}, 
+          {{primaryBilling.address.planet}}
         </p>
       </mat-card-content>
 
