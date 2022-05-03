@@ -73,6 +73,7 @@ export class RegisterComponent implements OnInit {
 @Component({
   selector: 'qr-dialog',
   templateUrl: 'qr-dialog.html',
+  styleUrls: ['./register.component.css'],
 })
 export class QrDialog {
     qrCode: string;
