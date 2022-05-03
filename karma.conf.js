@@ -70,7 +70,7 @@ module.exports = function (config) {
           functions: 70,
           overrides: {
             'baz/component/**/*.js': {
-              statements: 98
+              statements: 0
             }
           }
         }
