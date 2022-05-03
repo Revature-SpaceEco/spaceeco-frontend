@@ -1,9 +1,9 @@
 <div class="main-style" fxLayoutAlign="center" fxLayout="row">
-  <mat-card *ngIf="user" class="column-left" fxLayout="column" fxLayoutAlign="start">
+  <mat-card class="column-left" fxLayout="column" fxLayoutAlign="start">
     <div class="image-border" fxLayoutAlign="center">
       <img id="profile-image" src="../../../assets/Images/user-icon.png" alt="profile image" />
     </div>
-    <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
+    <mat-card *ngIf="user" class="card-color" fxLayoutAlign="center" fxLayout="column">
       <h2>{{user.firstName}} {{user.lastName}}</h2>
       <p>{{user.email}}</p>
     </mat-card>
@@ -12,17 +12,25 @@
     </mat-card>
   </mat-card>
 
-  <mat-card class="column-right">
+  <mat-card  class="column-right">
     <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
       <mat-card-header>
         <h2>Payment Info</h2>
       </mat-card-header>
-      <mat-card-content class="detail-content">
-        <p>Billing Card Type: </p>
-        <p>Biling Card Number: </p>
-        <p>Biling Security Number: </p>
-        <p>Biling Name: </p>
-        <p>Biling Address:</p>
+      <mat-card-content *ngIf="primaryBilling" class="detail-content">
+        <p>Billing Card Type: {{primaryBilling.cardType}}</p>
+        <p>Biling Card Number: {{primaryBilling.cardNumber}}</p>
+        <p>Biling Security Number: {{primaryBilling.securityNumber}}</p>
+        <p>Biling Name: {{primaryBilling.name}}</p>
+        <p>Biling Address: {{primaryBilling.address.addressLineOne}}, 
+          {{primaryBilling.address.addressLineTwo}}, 
+          {{primaryBilling.address.city}}, 
+          {{primaryBilling.address.state}}, 
+          {{primaryBilling.address.zip}}, 
+          {{primaryBilling.address.country}}, 
+          {{primaryBilling.address.solarSystem}}, 
+          {{primaryBilling.address.planet}}
+        </p>
       </mat-card-content>
 
     </mat-card>
