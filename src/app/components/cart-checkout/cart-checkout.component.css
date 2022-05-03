@@ -6,10 +6,10 @@ hr {
     width: 160px;
 }
  /* Current Step Tracker */
- .step-tracker {
-     padding-left: 10%;
-     padding-top: 5%;
- }
+.step-tracker {
+    padding-left: 10%;
+    padding-top: 5%;
+}
 
 .circle {
     border-radius: 50%;
@@ -40,6 +40,7 @@ hr {
 .checkout-container {
     display: inline-block;
     padding-left: 10%;
+    width: 600px;
 }
 
 /* Total Price Container*/

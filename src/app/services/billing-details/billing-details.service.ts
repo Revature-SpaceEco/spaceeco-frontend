@@ -2,6 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BillingDetails } from '../../models/BillingDetails';
 import { environment } from '../../../environments/environment';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.state';
+import { BillingActions, BillingSelectors } from './state';
+
 
 const URL = environment.BACKEND_URL;
 
@@ -17,15 +21,25 @@ export class BillingDetailsService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private store: Store<AppState>
+    ) { }
 
   // post and get
 
   addBillingDetails(billing: BillingDetails) {
-    return this.http.post<BillingDetails>(URL + "users/" + this.userId + "/billing", billing);
+    //return this.http.post<BillingDetails>(URL + "users/" + this.userId + "/billing", billing);
+    this.store.dispatch(BillingActions.addBillingDetails({billingDetails: billing}));
   }
 
-  getBillingDetails(billingId: string) {
-    return this.http.get<BillingDetails>(URL + "users/" + this.userId + "/billing" + billingId);
+  getBillingDetails() {
+    //return this.http.get<BillingDetails>(URL + "users/" + this.userId + "/billing" + billingId);
+    return this.store.select(BillingSelectors.getBilling);
   }
+
+  clearBillingDetails(){
+    this.store.dispatch(BillingActions.clearBillingDetails());
+  }
+
 }

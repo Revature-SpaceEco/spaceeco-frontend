@@ -5,19 +5,19 @@
             <h4>Payment Information</h4>
             <div>
                 <div class="form-section">
-                    <label for="billingName"><mat-icon>person</mat-icon> Name</label>
-                    <input type="text" id="billingName" name="fullName" placeholder="Full Name on card">
-    
-                    <label for="billingCardType"><mat-icon>credit_card</mat-icon> Card Type</label>
-                    <input type="text" id="billingCardType" name="fullName" placeholder="Card Type">    
-                </div>
-               <div class="form-section">
-                <label for="billingCardNumber"><mat-icon>credit_card</mat-icon> Card Number</label>
-                <input type="text" id="billingCardNumber" name="billingCardNumber" placeholder="Credit Card Number">
+                    <label for="name"><mat-icon>person</mat-icon> Name</label>
+                    <input type="text" id="name" name="name" placeholder="Full Name on card" formControlName="name">
 
-                <label for="billingSecurityNumber">CVV</label>
-                <input type="password" id="billingSecurityNumber" name="billingSecurityNumber" placeholder="Card CVV Number">
-               </div>  
+                    <label for="cardType"><mat-icon>credit_card</mat-icon> Card Type</label>
+                    <input type="text" id="cardType" name="cardType" placeholder="Card Type" formControlName="cardType">
+                </div>
+                <div class="form-section">
+                    <label for="cardNumber"><mat-icon>credit_card</mat-icon> Card Number</label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="Credit Card Number" formControlName="cardNumber">
+
+                    <label for="securityNumber">CVV</label>
+                    <input type="password" id="securityNumber" name="securityNumber" placeholder="Card CVV Number" formControlName="securityNumber">
+                </div>
             </div>
         </form>
         <form id="billingAddressForm" [formGroup]="billingAddressForm">
@@ -25,36 +25,36 @@
             <div>
                 <div class="form-section">
                     <label for="addressLineOne">Address Line One</label>
-                    <input type="text" id="addressLineOne" name="addressLineOne" placeholder="Street Address">
+                    <input type="text" id="addressLineOne" name="addressLineOne" placeholder="Street Address" formControlName="addressLineOne">
                 </div>
-                
+
                 <div class="form-section">
                     <label for="addressLineTwo">Address Line Two</label>
-                    <input type="text" id="addressLineTwo" name="addressLineTwo" placeholder="Addtional address information">    
+                    <input type="text" id="addressLineTwo" name="addressLineTwo" placeholder="Addtional address information" formControlName="addressLineTwo">
                 </div>
                 <div class="form-section">
                     <label for="city">City</label>
-                    <input type="text" id="city" name="city" placeholder="Enter City">
+                    <input type="text" id="city" name="city" placeholder="Enter City" formControlName="city">
 
                     <label for="state">State</label>
-                    <input type="text" id="state" name="state" placeholder="Enter State">
+                    <input type="text" id="state" name="state" placeholder="Enter State" formControlName="state">
                 </div>
                 <div class="form-section">
                     <label for="country">Country</label>
-                    <input type="text" id="country" name="country" placeholder="Enter Country">
-                
+                    <input type="text" id="country" name="country" placeholder="Enter Country" formControlName="country">
+
                     <label for="zip">Zipcode/Postal Code</label>
-                    <input type="text" id="zip" name="zip" placeholder="Enter Zipcode/Postal Code">
+                    <input type="text" id="zip" name="zip" placeholder="Enter Zipcode/Postal Code" formControlName="zip">
 
                 </div>
-    
+
                 <div class="form-section">
-     
+
                     <label for="planet">Planet</label>
-                    <input type="text" id="planet" name="planet" placeholder="Enter Planet/Galactic Coordinates">
+                    <input type="text" id="planet" name="planet" placeholder="Enter Planet/Galactic Coordinates" formControlName="planet">
 
                     <label for="solarSystem">Solar System</label>
-                    <input type="text" id="solarSystem" name="solarSystem" placeholder="Enter Solar System">
+                    <input type="text" id="solarSystem" name="solarSystem" placeholder="Enter Solar System" formControlName="solarSystem">
                 </div>
             </div>
         </form>
