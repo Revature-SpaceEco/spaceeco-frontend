@@ -3,56 +3,64 @@
     <div class="image-border" fxLayoutAlign="center">
       <img id="profile-image" src="../../../assets/Images/user-icon.png" alt="profile image" />
     </div>
-    <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
-      <h2>John Doe</h2>
-      <p>john.doe@gmail.com</p>
+    <mat-card *ngIf="user" class="card-color" fxLayoutAlign="center" fxLayout="column">
+      <h2>{{user.firstName}} {{user.lastName}}</h2>
+      <p>{{user.email}}</p>
     </mat-card>
-    <mat-card class="card-color" fxLayoutAlign="center">
-      <p>Verfied Seller</p> <!-- (use userrole) -->
+    <mat-card *ngIf="userRole" class="card-color" fxLayoutAlign="center">
+      <p>Verfied {{userRole}}</p> <!-- (use userrole) -->
     </mat-card>
   </mat-card>
 
-  <mat-card class="column-right">
+  <mat-card  class="column-right">
     <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
       <mat-card-header>
         <h2>Payment Info</h2>
       </mat-card-header>
-      <mat-card-content class="detail-content">
-        <p>Billing Card Type: </p>
-        <p>Biling Card Number: </p>
-        <p>Biling Security Number: </p>
-        <p>Biling Name: </p>
-        <p>Biling Address:</p>
+      <mat-card-content *ngIf="primaryBilling" class="detail-content">
+        <p>Billing Card Type: {{primaryBilling.cardType}}</p>
+        <p>Biling Card Number: {{primaryBilling.cardNumber}}</p>
+        <p>Biling Security Number: {{primaryBilling.securityNumber}}</p>
+        <p>Biling Name: {{primaryBilling.name}}</p>
+        <p>Biling Address: {{primaryBilling.address.addressLineOne}}, 
+          {{primaryBilling.address.addressLineTwo}}, 
+          {{primaryBilling.address.city}}, 
+          {{primaryBilling.address.state}}, 
+          {{primaryBilling.address.zip}}, 
+          {{primaryBilling.address.country}}, 
+          {{primaryBilling.address.solarSystem}}, 
+          {{primaryBilling.address.planet}}
+        </p>
       </mat-card-content>
 
     </mat-card>
     <mat-card class="card-color" fxLayoutAlign="center" fxLayout="column">
-      <!--*ngIf="address">-->
+      
       <mat-card-header>
         <h2>Address Info</h2>
       </mat-card-header>
       <div *ngIf="address; else addressNo">
         <mat-card-content #addressYes>
           <p>Address Line One:
-            <!--{{address.addressLineOne}}-->
+            {{address.addressLineOne}}
           </p>
           <p>Address Line Two:
-            <!--{{ address.addressLineTwo }} -->
+            {{ address.addressLineTwo }}
           </p>
           <p>City:
-            <!--{{ address.city }} -->
+            {{ address.city }}
           </p>
           <p>State:
-            <!--{{ address.state }} -->
+            {{ address.state }}
           </p>
           <p>Zip code:
-            <!--{{ address.zip }} -->
+            {{ address.zip }}
           </p>
           <p>Solar:
-            <!--{{{ address.solarSystem }}  -->
+            {{ address.solarSystem }} 
           </p>
           <p class="planet"> Planet:
-            <!--{{ address.planet }} -->
+            {{ address.planet }}
           </p>
 
         </mat-card-content>

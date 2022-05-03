@@ -6,7 +6,8 @@ import { AuthComponent } from './components/auth/auth.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
-import { BillingComponent } from './components/billing/billing.component'
+import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: DisplayProductsComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path:'login', component: AuthComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'checkout', component: CartCheckoutComponent },
-  { path: '**', component: DisplayProductsComponent }, // Create a 404 Page
+  { path: 'order', component: OrderCompletedComponent },
+  { path: '**', component: ErrorPageComponent }, // Create a 404 Page
 ];
 
 

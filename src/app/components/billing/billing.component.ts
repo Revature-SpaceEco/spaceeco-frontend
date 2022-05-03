@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { BillingDetails } from 'src/app/models/BillingDetails';
-import { BillingDetailsService } from 'src/app/services/billing-details/billing-details.service';
+import { BillingDetails } from '../../models//BillingDetails';
+import { BillingDetailsService } from '../../services/billing-details/billing-details.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Address } from 'src/app/models/Address';
+import { Address } from '../../models/Address';
+import { AddressServiceService } from '../../services/address/address-service.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-billing',
@@ -15,21 +17,26 @@ export class BillingComponent implements OnInit {
 
   finalAddress: Address;
   finalBillingDetails: BillingDetails;
-  
+
   @Output() nextStep = new EventEmitter<number>();
 
   billingDetails: BillingDetails;
 
-  constructor(private fb: FormBuilder, private billingService: BillingDetailsService) { }
+  constructor(
+    private fb: FormBuilder,
+    private billingService: BillingDetailsService,
+    private addressService: AddressServiceService,
+    private snackBarService: SnackbarService,
+    ) { }
 
   ngOnInit(): void {
     this.billingForm = this.fb.group({
-      billingName: new FormControl('', Validators.required),
-      billingCardType: new FormControl('', Validators.required),
-      billingCardNumber: new FormControl('', Validators.required),
-      billingSecurityNumber: new FormControl('', Validators.required)
+      name: new FormControl('', Validators.required),
+      cardType: new FormControl('', Validators.required),
+      cardNumber: new FormControl('', Validators.required),
+      securityNumber: new FormControl('', Validators.required)
   });
-  
+
     this.billingAddressForm = this.fb.group({
       addressLineOne: new FormControl('', Validators.required),
       addressLineTwo: new FormControl(''),
@@ -39,28 +46,29 @@ export class BillingComponent implements OnInit {
       zip: new FormControl('', Validators.required),
       planet: new FormControl('', Validators.required),
       solarSystem: new FormControl('', Validators.required),
-    })
+    });
   }
 
   proceedToShipping() {
-    this.nextStep.emit(3);
-    const billingAddress = this.billingAddressForm.value;
-    const billingInfo = this.billingForm.value;
+    console.log(this.billingForm.value);
+    console.log(this.billingAddressForm.value);
+    if (this.billingForm.valid || this.billingAddressForm.valid){
+      this.finalBillingDetails = {
+        ...this.billingForm.value
+      }
+      this.finalAddress = {
+        ...this.billingAddressForm.value
+      }
 
-    // map billing addess to addess model
-    // finalAddress.addressLineOne: string,
-    // addressLineTwo?: string,
-    // city: string,
-    // state: string,
-    // country: string,
-    // zip: string,
-    // solarSystem: string,
-    // planet: string
+      this.finalBillingDetails.address = this.finalAddress;
 
-    //billing info and to billing details, add in address model
+      this.billingService.addBillingDetails(this.finalBillingDetails);
 
-    // this.billingService.addBillingDetails(finalBillingDetails);
+      this.snackBarService.success("Billing information saved");
 
+      this.nextStep.emit(3);
+    } else {
+        this.snackBarService.error("Check the values");
+    }
   }
-
 }

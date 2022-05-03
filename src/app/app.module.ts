@@ -37,6 +37,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 import { RouterState } from '@ngrx/router-store';
 import { JwtModule } from '@auth0/angular-jwt';
+import { MatDialogModule } from '@angular/material/dialog';
+import { QrDialog } from './components/register/register.component';
 
 export function tokenGetter() {
     return localStorage.getItem("jwt");
@@ -46,6 +48,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     RegisterComponent,
+    QrDialog,
     DisplayProductsComponent,
     NavbarComponent,
     CartAddComponent,
@@ -73,6 +76,7 @@ export function tokenGetter() {
     MatSelectModule,
     MatGridListModule,
     MatSnackBarModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, {}),

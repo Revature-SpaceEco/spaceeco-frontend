@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Product } from 'src/app/models/Product';
-import { CartCheckoutService } from 'src/app/services/cart/cart-checkout.service';
+import { Product } from '../../models/Product';
+import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 import { ProductService} from '../../services/product/product.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'cart-add',
@@ -16,16 +16,15 @@ export class CartAddComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private cartService: CartCheckoutService,
+    private snackBarService: SnackbarService
     ) {}
 
   ngOnInit(): void {
-    this.item$ = this.cartService.getProductIdSelector();
-    this.cartService.getRouteId().subscribe(
-      route => console.log(route)
-    );
+    this.item$ = this.productService.getCurrentProduct();
   }
 
   addItem(item: Product) {
     this.cartService.addItem(item);
+    this.snackBarService.success(`${item.name} successfully added to cart.`);
   }
 }

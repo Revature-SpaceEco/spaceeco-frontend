@@ -1,3 +1,4 @@
+import { BillingDetails } from "./BillingDetails";
 import { UserRole } from "./UserRole";
 
 export interface User {
@@ -8,4 +9,5 @@ export interface User {
     firstName: string;
     lastName: string;
     userRole: UserRole;
+    primaryBilling: BillingDetails;
 }
