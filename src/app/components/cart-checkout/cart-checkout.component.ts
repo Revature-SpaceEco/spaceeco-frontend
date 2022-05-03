@@ -30,11 +30,7 @@ export class CartCheckoutComponent implements OnInit {
     }
 
   ngOnInit(): void {
-<<<<<<< Updated upstream
     this.currentStep = 1;
-=======
-    this.currentStep = 1; 
->>>>>>> Stashed changes
   }
 
   goToNextStep(step: number) {
