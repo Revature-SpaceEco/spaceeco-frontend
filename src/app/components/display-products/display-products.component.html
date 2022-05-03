@@ -1,13 +1,14 @@
-
-<mat-grid-list cols = "3" rowheight = "600px">
-  <mat-grid-tile *ngFor = "let product of (products | async)">
-    <mat-card class = "mat-elevation-z0" >
-      <mat-card-title (click)="selectProduct(product.id)">{{product.name}}</mat-card-title>
-      <mat-card-subtitle (click)="selectProduct(product.id)">{{product.description}}</mat-card-subtitle>
-      <mat-card-content>
-        <img mat-card-image src="{{product.image}}" alt = "No picture" >
-        ${{product.cost}}
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
+<div class="product-cards">
+  <mat-grid-list cols="3" rowheight="600px">
+    <mat-grid-tile *ngFor="let product of (products | async)">
+      <mat-card (click)="selectProduct(product.id)" class="mat-elevation-z0">
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle>{{product.description}}</mat-card-subtitle>
+        <mat-card-content>
+          <img mat-card-image src="{{product.image}}" alt="No picture">
+          ${{product.cost}}
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
   </mat-grid-list>
+</div>

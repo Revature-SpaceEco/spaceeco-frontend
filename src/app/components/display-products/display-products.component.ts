@@ -15,15 +15,15 @@ export class DisplayProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: Router,
-    ) { }
+  ) { }
 
 
-  getProducts(){
+  getProducts() {
     this.productService.loadProductsFromApi();
     this.products = this.productService.selectAllProducts();
   }
 
-  selectProduct(productId: number){
+  selectProduct(productId: number) {
     this.router.navigate(['/products', productId]);
   }
 
