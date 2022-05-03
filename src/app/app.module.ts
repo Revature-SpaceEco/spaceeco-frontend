@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,7 +27,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './app.state';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProductEffects } from './services/product/state';
 import { CartComponent } from './components/cart/cart.component';
 import { BillingComponent } from './components/billing/billing.component';
@@ -38,10 +37,13 @@ import { OrderCompletedComponent } from './components/order-completed/order-comp
 import { RouterState } from '@ngrx/router-store';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MatDialogModule } from '@angular/material/dialog';
-import { QrDialog } from './components/register/register.component';
+import {
+  RegisterComponent,
+  QrDialog,
+} from './components/register/register.component';
 
 export function tokenGetter() {
-    return localStorage.getItem("jwt");
+  return localStorage.getItem('jwt');
 }
 
 @NgModule({
@@ -59,7 +61,7 @@ export function tokenGetter() {
     BillingComponent,
     ShippingComponent,
     ErrorPageComponent,
-    OrderCompletedComponent
+    OrderCompletedComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -80,27 +82,28 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([
-      ProductEffects.ProductEffects
-    ]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([ProductEffects.ProductEffects]),
     StoreRouterConnectingModule.forRoot({
       routerState: RouterState.Minimal,
-    }), 
+    }),
     JwtModule.forRoot({
-        config: {
-            tokenGetter: tokenGetter,
+      config: {
+        tokenGetter: tokenGetter,
 
-            // WARN do not use wildcard in production
-            // Set this to cloud address when deploying
-            allowedDomains: ["localhost:8080"],
+        // WARN do not use wildcard in production
+        // Set this to cloud address when deploying
+        allowedDomains: ['localhost:8080'],
 
-            // Set this for routes that do not send authorization 
-            // in header
-            //disallowedRoutes: []
-            skipWhenExpired: false // we handle this explicitly
-        },
-    }) 
+        // Set this for routes that do not send authorization
+        // in header
+        //disallowedRoutes: []
+        skipWhenExpired: false, // we handle this explicitly
+      },
+    }),
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],
