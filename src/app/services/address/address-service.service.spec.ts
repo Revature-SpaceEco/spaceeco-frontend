@@ -25,11 +25,6 @@ describe('AddressServiceService', () => {
 
   });
 
-  it('should get item', ()=>{
-
-    expect(localStorage.getItem('userId')).toBe("1");
-  });
-
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
