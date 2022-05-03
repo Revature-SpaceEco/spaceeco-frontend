@@ -36,28 +36,31 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {}
-
   register() {
     if (this.registerForm.valid) {
-      this.authService.register(this.registerForm.value).pipe(
-        switchMap(response => {
-          console.log(response);
-          const dialogRef = this.dialog.open(QrDialog, {
-            data: response,
-          });
-          return dialogRef.afterClosed();
-        })
-      ).subscribe({
-        error: (err) => { console.log(err); },
-        complete: () => {
-          this.route.navigate(['/login']); 
-        }
-      });
+      this.authService
+        .register(this.registerForm.value)
+        .pipe(
+          switchMap((response) => {
+            console.log(response);
+            const dialogRef = this.dialog.open(QrDialog, {
+              data: response,
+            });
+            return dialogRef.afterClosed();
+          })
+        )
+        .subscribe({
+          error: (err) => {
+            console.log(err);
+          },
+          complete: () => {
+            this.route.navigate(['/login']);
+          },
+        });
     }
   }
 
- getUserById() {
+  getUserById() {
     this.userService.getUserById().subscribe({
       next: (res) => {
         console.log(res);
@@ -67,7 +70,6 @@ export class RegisterComponent implements OnInit {
       },
     });
   }
-
 }
 
 @Component({
@@ -76,13 +78,12 @@ export class RegisterComponent implements OnInit {
   styleUrls: ['./register.component.css'],
 })
 export class QrDialog {
-    qrCode: string;
+  qrCode: string;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: UserDTO) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: UserDTO) {}
 
-    ngOnInit() {
-      this.qrCode = this.data.qrCode;
-      console.log(this.qrCode);
-    }
-
+  ngOnInit() {
+    this.qrCode = this.data.qrCode;
+    console.log(this.qrCode);
+  }
 }

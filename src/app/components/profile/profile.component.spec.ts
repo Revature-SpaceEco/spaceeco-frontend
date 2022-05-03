@@ -49,7 +49,7 @@ describe('ProfileComponent', () => {
 
   it('should show address after component initialized', () =>{
     planetEl = fixture.nativeElement.querySelector('.planet');
-    expect(planetEl.textContent).toBe(address.planet);
+    expect(planetEl.textContent).toContain(address.planet);
     expect(getAddressSpy.calls.any()).withContext('getAddress called').toBe(true);
   })
 });

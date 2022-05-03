@@ -6,8 +6,7 @@ import { ProductService } from '../../services/product/product.service';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
-
-
+import { provideMockStore } from '@ngrx/store/testing';
 
 
 describe('CartAddComponent', () => {
@@ -19,7 +18,8 @@ describe('CartAddComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule, RouterTestingModule, MatSnackBarModule],
       declarations: [ CartAddComponent ],
-      providers: [ProductService, {provide:HttpClient}, SnackbarService]
+      providers: [ProductService, {provide:HttpClient}, SnackbarService, provideMockStore({})],
+
     })
     .compileComponents();
   });
@@ -32,9 +32,9 @@ describe('CartAddComponent', () => {
     //spyOn(ProductServiceService, 'getProductById')
     fixture.detectChanges();
   });
-/*
-  it('should create', () => {
-    expect(component).toBeDefined();
-  });
-  */
+
+   it('should create', () => {
+     expect(component).toBeDefined();
+   });
+
 });
