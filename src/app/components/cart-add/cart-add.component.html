@@ -1,14 +1,15 @@
-<div class="wrapper">
-    <div *ngIf="item$ | async as item">
-        <div class="one"> <img class="product-image" src="{{item.image}}"> </div>
-        <div class="two"><button class="add-to-cart-btn" (click)="addItem(item)">Add to Cart <img src = "https://cdn-icons-png.flaticon.com/512/263/263142.png" height="50" style = "background-color:orange" /></button></div>
-        <div class="three">
-            <p> {{item.name}}</p>
-        </div>
-        <div class="four">
-            <p> {{item.cost}}</p>
-        </div>
-        <div class="five">
-            <p> {{item.description}}</p>
-        </div>
+<div class="grid-container" *ngIf="item$ | async as item">
+    <div class="item1"> <img class="product-image" src="{{item.image}}"> </div>
+    <div class="item2">
+        <p> {{item.name}}</p>
     </div>
+    <div class="item3">
+        <p> ${{item.cost}}</p>
+    </div>
+    <div class="item4">
+        <p> {{item.description}}</p>
+    </div>
+    <div class="item5"><button class="add-to-cart-btn" (click)="addItem(item)">Add to Cart <img
+                src="https://cdn-icons-png.flaticon.com/512/263/263142.png" height="50"
+                style="background-color:orange" /> </button></div>
+</div>

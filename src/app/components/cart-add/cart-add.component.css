@@ -1,72 +1,77 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap:10px;
-    padding: 20px 0;
-    height: 871px;
-    
-  }
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  padding: 20px 0;
+  height: 871px;
 
-  .grid-container > div{
-    text-align: center;
-  }
-  
-  .item1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    max-width: 200px;
-    max-height: 200px; 
-    margin-top: 150px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .item2 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 60px;
-    font-weight: bold;
-  }
-  .item3 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -300px;
-    font-size: 40px;
-    
-  }
-  .item4 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -200px;
-    font-size: 40px;
-  }
-  .item5 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -150px;
-    text-align: center;
+}
 
-  }
-  .product-image{
-    max-height: 600px;
-    max-width: 600px;
-  }
+.grid-container>div {
+  text-align: center;
+}
 
-  .add-to-cart-btn{
-    font-size: 30px;
-    line-height: 70px;
-    border-radius: 20px;
-    background-color: orange;
-    border: 3px solid orange;
-  }
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  max-width: 200px;
+  max-height: 200px;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  .add-to-cart-btn:hover{
-    cursor: pointer;
-  }
+.item2 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.item3 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -300px;
+  font-size: 40px;
+
+}
+
+.item4 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -200px;
+  font-size: 40px;
+}
+
+.item5 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -150px;
+  text-align: center;
+
+}
+
+.product-image {
+  max-height: 600px;
+  max-width: 600px;
+}
+
+.add-to-cart-btn {
+  font-size: 30px;
+  line-height: 70px;
+  border-radius: 20px;
+  background-color: orange;
+  border: 3px solid orange;
+}
+
+.add-to-cart-btn:hover {
+  cursor: pointer;
+}
