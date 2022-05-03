@@ -1,5 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
+const path = require('path');
 
 module.exports = function (config) {
   config.set({
@@ -11,7 +12,8 @@ module.exports = function (config) {
       require('karma-firefox-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      'karma-coverage-istanbul-reporter'
     ],
     client: {
       jasmine: {
@@ -42,7 +44,40 @@ module.exports = function (config) {
         }
       }
     },
-    reporters: ['progress', 'kjhtml'],
+    coverageIstanbulReporter: {
+      reports: ['html', 'lcovonly', 'text-summary'],
+      dir: path.join(__dirname, 'coverage/istanbul'),
+      combineBrowserReports: true,
+      fixWebpackSourcePaths: true,
+      skipFilesWithNoCoverage: true,
+      'report-config': {
+        html: {
+          subdir: 'html'
+        }
+      },
+      thresholds: {
+        emitWarning: false,
+        global: {
+          statements: 70,
+          lines: 70,
+          branches: 70,
+          functions: 70
+        },
+        each: {
+          statements: 70,
+          lines: 70,
+          branches: 70,
+          functions: 70,
+          overrides: {
+            'baz/component/**/*.js': {
+              statements: 98
+            }
+          }
+        }
+      },
+      verbose: true
+    },
+    reporters: ['progress', 'kjhtml', 'coverage-istanbul'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
