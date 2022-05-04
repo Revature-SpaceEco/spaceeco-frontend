@@ -1,7 +1,6 @@
 import { Address } from "../../../models/Address";
 
 export interface State {
-    id: number | null;
     cardType: string | null;
     cardNumber: number | null;
     securityNumber: number | null;
@@ -10,7 +9,6 @@ export interface State {
 }
 
 export const initialState: State = {
-    id: null,
     cardType: null,
     cardNumber: null,
     securityNumber: null,
