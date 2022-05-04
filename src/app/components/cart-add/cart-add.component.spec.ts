@@ -37,4 +37,14 @@ describe('CartAddComponent', () => {
      expect(component).toBeDefined();
    });
 
+   describe('ngInit', () => {
+    it('should call getCurrentProduct on component init', () => {
+      const spy = spyOn(service, 'getCurrentProduct');
+      component.ngOnInit();
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+   
+
 });
