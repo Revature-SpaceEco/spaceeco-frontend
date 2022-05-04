@@ -2,7 +2,6 @@ export interface Seller{
     id: number;
     username: string;
     email: string;
-    firstname: string;
+    firstName: string;
     active: boolean;
-
 }
