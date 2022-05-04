@@ -36,15 +36,15 @@ describe('CartComponent', () => {
       name: "test",
       description: "test",
       cost: 1200,
-      category: { id: 1, name: "test" },
+      categories: { id: 1, name: "test" },
       image: "img",
-      sellerInfo: {
+      seller:{
         id: 1,
-        username: "seller",
-        email: "seller@email.com",
-        firstname: "john",
+        username: "test",
+        email: "test@email.com",
+        firstName: "test",
         active: true
-      },
+      }
     }];
     fixture.detectChanges();
     const spy = spyOn(component, 'clearCart');
