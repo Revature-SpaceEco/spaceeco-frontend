@@ -42,6 +42,8 @@ import {
   QrDialog,
 } from './components/register/register.component';
 
+import { environment } from 'src/environments/environment';
+
 export function tokenGetter() {
   return localStorage.getItem('jwt');
 }
@@ -96,7 +98,7 @@ export function tokenGetter() {
 
         // WARN do not use wildcard in production
         // Set this to cloud address when deploying
-        allowedDomains: ['localhost:8080'],
+        allowedDomains: [environment.BACKEND_URL],
 
         // Set this for routes that do not send authorization
         // in header

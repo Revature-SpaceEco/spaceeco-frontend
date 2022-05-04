@@ -36,7 +36,6 @@ export class AddressServiceService {
   }
 
   getAddress(): Observable<Address> {
-    
     return this.http.get<Address>(URL + '/users/' + this.userId + '/address', this.httpOptions2);
   }
 

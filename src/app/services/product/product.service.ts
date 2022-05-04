@@ -4,6 +4,9 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { Product } from '../../models/Product';
 import { ProductSelectors, ProductActions } from './state';
+import { environment } from 'src/environments/environment';
+
+const URL = environment.BACKEND_URL;
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +27,11 @@ export class ProductService {
   }
 
   getProductById(id: number){
-    return this.http.get<Product>(`http://localhost:8080/products/${id}`);
+    return this.http.get<Product>(URL + `/products/${id}`);
     }
 
   getAllProducts(){
-    return this.http.get<Product[]>(`http://localhost:8080/products`);
+    return this.http.get<Product[]>(URL + 'products');
   }
 
   selectAllProducts(){
