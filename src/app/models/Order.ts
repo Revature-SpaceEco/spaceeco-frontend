@@ -1,12 +1,14 @@
 import { Product } from "./Product";
 import { Address } from "./Address";
 import { Payment } from "./Payment";
+import { User } from "./User";
 
 export interface Order {
   id: number;
-  orderProducts: Product[];
+  buyer: User;
+  items: Product[];
   orderDate: number;
   orderStatus: string;
-  shippingAddress: Address;
-  orderPayment: Payment;
+  shippingAddressId: Address;
+  payment: Payment;
 }
