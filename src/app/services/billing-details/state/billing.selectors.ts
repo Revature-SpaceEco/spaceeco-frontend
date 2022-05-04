@@ -8,7 +8,6 @@ export const getBilling= createSelector(
   getBillingDetailsState,
   state => {
     let billing: BillingDetails = {
-    id: state.id!,
     cardType: state.cardType!,
     cardNumber: state.cardNumber!,
     securityNumber: state.securityNumber!,

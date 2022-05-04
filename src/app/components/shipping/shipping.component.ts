@@ -9,6 +9,8 @@ import { CartCheckoutService } from '../../services/cart/cart-checkout.service';
 import { OrderService } from '../../services/order/order.service';
 import { SnackbarService } from '../../services/snackbar/snackbar.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-shipping',
@@ -22,13 +24,17 @@ export class ShippingComponent implements OnInit {
   newAddress: Address = <Address>{};
 
   newPayment: Payment = <Payment>{};
+
+  newBuyer: User = <User>{};
+  
   order: Order = {
     id: 0,
-    orderProducts: [],
+    items: [],
+    buyer: this.newBuyer,
     orderDate: 0,
-    orderStatus: 'pending',
-    shippingAddress: this.newAddress,
-    orderPayment: this.newPayment
+    orderStatus: 'Pending',
+    shippingAddressId: this.newAddress,
+    payment: this.newPayment
   };
 
   constructor(
@@ -37,6 +43,7 @@ export class ShippingComponent implements OnInit {
     private cartCheckoutService: CartCheckoutService,
     private snackBarService: SnackbarService,
     private billingService: BillingDetailsService,
+    private userService: UserService,
     private router: Router,
     ) { }
 
@@ -61,14 +68,20 @@ export class ShippingComponent implements OnInit {
       }
 
       this.billingService.getBillingDetails().subscribe(details => {
-        this.order.orderPayment.paymentBillingDetails = details;
+        this.order.payment.billingDetails = details;
       });
 
       this.cartCheckoutService.getCart().subscribe(items =>{
-        this.order.shippingAddress = this.finalAddress;
-        this.order.orderProducts = items;
-        this.orderService.addOrder(this.order).subscribe();
+        this.order.shippingAddressId = this.finalAddress;
+        this.order.items = items;
         }
+      );
+
+      this.userService.getUserById().subscribe(info => {
+        this.order.buyer = info;
+        this.orderService.addOrder(this.order).subscribe();
+      }
+
       );
 
       this.router.navigate(['order']);
