@@ -51,5 +51,15 @@ describe('ProfileComponent', () => {
     planetEl = fixture.nativeElement.querySelector('.planet');
     expect(planetEl.textContent).toContain(address.planet);
     expect(getAddressSpy.calls.any()).withContext('getAddress called').toBe(true);
-  })
+  });
+
+  describe('ngInit', () => {
+    it('should call getUser on component init', () => {
+      const spy = spyOn(component, 'getUser');
+      component.ngOnInit();
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+
 });

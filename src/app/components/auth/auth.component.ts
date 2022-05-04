@@ -18,11 +18,10 @@ export class AuthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
+
     const username = form.value.username;
     const password = form.value.password;
     const totp = form.value.totp;

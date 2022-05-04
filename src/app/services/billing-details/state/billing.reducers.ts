@@ -7,7 +7,6 @@ export const billingReducer = createReducer(
   on(fromActions.addBillingDetails, (state, {billingDetails}) => {
     return {
       ...state,
-      id: billingDetails.id,
       cardType: billingDetails.cardType,
       cardNumber: billingDetails.cardNumber,
       securityNumber: billingDetails.securityNumber,
